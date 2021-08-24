@@ -30,6 +30,10 @@ export class EvaluationComponent implements OnInit {
     this.evaluationForm = new Evaluation(evaluation.id, evaluation.version, evaluation.comportemental, evaluation.technique, evaluation.commentaires);
   }
 
+  delete(id:number)
+  {
+    this.evaluationService.deleteById(id);
+  }
 
 
   save() {
