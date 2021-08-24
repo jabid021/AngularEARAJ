@@ -30,6 +30,8 @@ export class EvaluationComponent implements OnInit {
     this.evaluationForm = new Evaluation(evaluation.id, evaluation.version, evaluation.comportemental, evaluation.technique, evaluation.commentaires);
   }
 
+
+
   save() {
     if (this.evaluationForm.id) {
       this.evaluationService.modify(this.evaluationForm);

@@ -12,8 +12,8 @@ export class SalleService {
   constructor() {
     let adresse : Adresse = new Adresse("6 rue rougemont","","75009","Paris");
     this.salles.push(new Salle(1, "Coco", 15, true, adresse, 0));
-    this.salles.push(new Salle(2, "Rico", 12, true, null,0));
-    this.salles.push(new Salle(3, "Condorcet", 19, false,null,0));
+    this.salles.push(new Salle(2, "Rico", 12, true, new Adresse(),0));
+    this.salles.push(new Salle(3, "Condorcet", 19, false,new Adresse(),0));
   }
 
   findAll(): Array<Salle> {
@@ -52,7 +52,7 @@ export class SalleService {
   }
 
   deleteById(id: number) {
-    let find: boolean = false;
+   let find: boolean = false;
     for (var indice = 0; indice < this.salles.length; indice++) {
       if (this.salles[indice].id == id) {
         find = true;
@@ -62,5 +62,6 @@ export class SalleService {
     if (find) {
       this.salles.splice(indice, 1);
     }
+
   }
 }

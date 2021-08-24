@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Salle} from "../model/Salle";
 import {SalleService} from "./salle-service.service";
+import {Adresse} from "../model/adresse";
 
 @Component({
   selector: 'salle',
@@ -22,11 +23,16 @@ export class SalleComponent implements OnInit {
 
   add() {
     this.salleForm = new Salle();
+    this.salleForm.adresse=new Adresse();
   }
 
   edit(id: number) {
     let salle: Salle = this.salleService.findById(id);
     this.salleForm = new Salle(salle.id, salle.nom, salle.capacite, salle.videoProjecteur, salle.adresse, salle.version);
+  }
+
+  delete(id:number){
+    this.salleService.deleteById(id);
   }
 
   save() {
