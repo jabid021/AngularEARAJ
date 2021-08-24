@@ -13,6 +13,7 @@ const routes: Routes = [
   {path : "matiere", component : MatiereComponent},
   {path : "salle", component: SalleComponent},
   {path : "formateur", component: FormateurComponent},
+  {path : "stagiaire", component: StagiaireComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 
