@@ -7,12 +7,14 @@ import { EvaluationComponent } from './evaluation/evaluation.component';
 import {EvaluationService} from "./evaluation/evaluation.service";
 import { AccueilComponent } from './accueil/accueil.component';
 import {FormsModule} from "@angular/forms";
+import { FiliereComponent } from './filiere/filiere.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EvaluationComponent,
-    AccueilComponent
+    AccueilComponent,
+    FiliereComponent
   ],
   imports: [
     BrowserModule,
