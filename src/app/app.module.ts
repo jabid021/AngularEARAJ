@@ -8,6 +8,7 @@ import {EvaluationService} from "./evaluation/evaluation.service";
 import { AccueilComponent } from './accueil/accueil.component';
 import {FormsModule} from "@angular/forms";
 import { SalleComponent } from './salle/salle.component';
+import {SalleService} from "./salle/salle-service.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { SalleComponent } from './salle/salle.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [EvaluationService],
+  providers: [EvaluationService, SalleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

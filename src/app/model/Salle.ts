@@ -1,9 +1,12 @@
+import {Adresse} from "./adresse";
+
 export class Salle {
   id: number;
   nom: string;
   capacite:number;
   videoProjecteur: boolean;
   adresse:Adresse;
+  version:number;
 
 
   constructor(id?: number, nom?: string, capacite?: number, videoProjecteur?: boolean, adresse?:Adresse) {

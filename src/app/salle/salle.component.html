@@ -1,1 +1,79 @@
-<p>salle works!</p>
+<div class="card mt-3">
+  <div class="card-header bg-info text-white">
+    <h2>Liste des salles</h2>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Identifiant</th>
+        <th>Nom</th>
+        <th>Capacite</th>
+        <th>Video Projecteur</th>
+        <th>Adresse</th>
+        <th>Version</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let salle of list()">
+        <td>{{salle.id}}</td>
+        <td>{{salle.nom}}</td>
+        <td>{{salle.capacite}}</td>
+        <td>{{salle.videoProjecteur}}</td>
+        <td>{{salle.adresse}}</td>
+        <td>{{salle.version}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-primary" (click)="edit(salle.id)"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+    <a class="btn btn-success btn-lg" (click)="add()">
+      <i class="fa fa-plus"></i>
+    </a>
+  </div>
+
+  <div class="card mt-3" *ngIf="salleForm">
+    <div class="card-header bg-info text-white">
+      <h3>Edition de la salle</h3>
+    </div>
+
+    <div class="card-body">
+      <div class="form-group">
+        <label for="comportemental">Nom :</label>
+        <input type="number" class="form-control" id="comportemental" [(ngModel)]="salleForm.nom">
+      </div>
+      <div class="form-group">
+        <label for="technique">Capacité :</label>
+        <input type="number" class="form-control" id="technique" [(ngModel)]="salleForm.capacite">
+      </div>
+      <div class="form-group">
+        <label for="commentaires">Video Projecteur :</label>
+        <input type="text" class="form-control" id="commentaires" [(ngModel)]="salleForm.videoProjecteur">
+      </div>
+      <div class="form-group">
+        <label for="commentaires">Adresse :</label>
+        <input type="text" class="form-control" id="commentaires" [(ngModel)]="salleForm.adresse">
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <div class="btn-group btn-group-lg float-right">
+        <a class="btn btn-success" (click)="save()">
+          <i class="fa fa-check"></i>
+        </a>
+        <a class="btn btn-warning" (click)="cancel()">
+          <i class="fa fa-sync"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
