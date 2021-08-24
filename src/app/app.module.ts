@@ -9,13 +9,15 @@ import { AccueilComponent } from './accueil/accueil.component';
 import {FormsModule} from "@angular/forms";
 import { SalleComponent } from './salle/salle.component';
 import {SalleService} from "./salle/salle-service.service";
+import { FormateurComponent } from './formateur/formateur.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EvaluationComponent,
     AccueilComponent,
-    SalleComponent
+    SalleComponent,
+    FormateurComponent
   ],
   imports: [
     BrowserModule,
