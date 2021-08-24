@@ -5,6 +5,7 @@ import {AccueilComponent} from "./accueil/accueil.component";
 import {MatiereComponent} from "./matiere/matiere.component";
 import {SalleComponent} from "./salle/salle.component";
 import {FormateurComponent} from "./formateur/formateur.component";
+import {StagiaireComponent} from "./stagiaire/stagiaire.component";
 
 const routes: Routes = [
   {path: "accueil", component: AccueilComponent},
