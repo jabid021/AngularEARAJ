@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Salle} from "../model/Salle";
+import {Adresse} from "../model/adresse";
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,10 @@ export class SalleService {
   salles: Array<Salle> = new Array<Salle>();
 
   constructor() {
-    this.salles.push(new Salle(1, "Coco", 15, true));
-    this.salles.push(new Salle(2, "Rico", 12, true));
-    this.salles.push(new Salle(3, "Condorcet", 19, false));
+    let adresse : Adresse = new Adresse("6 rue rougemont","","75009","Paris");
+    this.salles.push(new Salle(1, "Coco", 15, true, adresse, 0));
+    this.salles.push(new Salle(2, "Rico", 12, true, null,0));
+    this.salles.push(new Salle(3, "Condorcet", 19, false,null,0));
   }
 
   findAll(): Array<Salle> {

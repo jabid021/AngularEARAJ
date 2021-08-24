@@ -26,7 +26,7 @@ export class SalleComponent implements OnInit {
 
   edit(id: number) {
     let salle: Salle = this.salleService.findById(id);
-    this.salleForm = new Salle(salle.id, salle.nom, salle.capacite, salle.videoProjecteur, salle.adresse);
+    this.salleForm = new Salle(salle.id, salle.nom, salle.capacite, salle.videoProjecteur, salle.adresse, salle.version);
   }
 
   save() {

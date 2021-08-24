@@ -21,7 +21,7 @@
         <td>{{salle.nom}}</td>
         <td>{{salle.capacite}}</td>
         <td>{{salle.videoProjecteur}}</td>
-        <td>{{salle.adresse}}</td>
+        <td>{{salle.adresse.rue}}, {{salle.adresse.complement}}, {{salle.adresse.codePostal}}, {{salle.adresse.ville}}</td>
         <td>{{salle.version}}</td>
         <td>
           <div class="btn-group btn-group-sm">
@@ -59,7 +59,7 @@
       </div>
       <div class="form-group">
         <label for="adresse">Adresse :</label>
-        <input type="Adresse" class="form-control" id="adresse" [(ngModel)]="salleForm.adresse">
+        <input type="text" class="form-control" id="adresse" [(ngModel)]="salleForm.adresse">
       </div>
     </div>
 
