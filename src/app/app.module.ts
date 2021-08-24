@@ -18,7 +18,10 @@ import { FormateurComponent } from './formateur/formateur.component';
     AppComponent,
     EvaluationComponent,
     AccueilComponent,
-    StagiaireComponent
+    StagiaireComponent,
+    SalleComponent,
+    FormateurComponent,
+    MatiereComponent
   ],
   imports: [
     BrowserModule,
