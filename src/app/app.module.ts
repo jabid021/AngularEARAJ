@@ -19,7 +19,11 @@ import { FormateurComponent } from './formateur/formateur.component';
     AppComponent,
     EvaluationComponent,
     AccueilComponent,
-    FiliereComponent
+    FiliereComponent,
+    StagiaireComponent,
+    SalleComponent,
+    MatiereComponent,
+    FormateurComponent
   ],
   imports: [
     BrowserModule,

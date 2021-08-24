@@ -46,11 +46,6 @@ export class EvaluationComponent implements OnInit {
     this.evaluationForm = null;
   }
 
-  delete(id:number)
-  {
-    this.evaluationService.deleteById(id);
-  }
-
   cancel() {
     this.evaluationForm = null;
   }
