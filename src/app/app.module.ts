@@ -26,9 +26,7 @@ import {HttpClientModule} from "@angular/common/http";
     StagiaireComponent,
     SalleComponent,
     MatiereComponent,
-    CheckedPipe,
-    FormateurComponent,
-    UEComponent,
+    FormateurComponent
   ],
   imports: [
     BrowserModule,

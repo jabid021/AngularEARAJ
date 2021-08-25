@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {EvaluationService} from "./evaluation.service";
 import {Evaluation} from "../model/evaluation";
 import {EvaluationHttpService} from "./evaluation-http.service";
 

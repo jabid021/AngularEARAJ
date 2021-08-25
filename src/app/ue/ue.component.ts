@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< Updated upstream
 import {Filiere} from "../model/filiere";
 import {UE} from "../model/UE";
 import {SalleService} from "../salle/salle-service.service";
@@ -12,19 +13,40 @@ import {Salle} from "../model/salle";
 
 @Component({
   selector: 'ue',
+=======
+import {UE} from "../model/UE";
+import {UEService} from "./ue.service";
+import {Filiere} from "../model/Filiere";
+import {FiliereService} from "../filiere/filiere.service";
+import {Evaluation} from "../model/evaluation";
+
+
+@Component({
+  selector: 'app-ue',
+>>>>>>> Stashed changes
   templateUrl: './ue.component.html',
   styleUrls: ['./ue.component.scss']
 })
 export class UEComponent implements OnInit {
+<<<<<<< Updated upstream
   ueForm : UE=null;
   constructor(private formateurService: FormateurServiceHTTP,private matiereService: MatiereServiceHTTP,private salleService: SalleService,private ueService: UeHttpService, private filiereService: FiliereHttpService) {
   }
 
+=======
+  ueForm:UE=null;
+
+  constructor(private ueService:UEService,private filierService:FiliereService) { }
+
+  ngOnInit(): void {
+  }
+>>>>>>> Stashed changes
 
   list(): any {
     return this.ueService.findAll();
   }
 
+<<<<<<< Updated upstream
   listFiliere(): Array<Filiere>
   {
   return this.filiereService.findAll();
@@ -71,6 +93,28 @@ export class UEComponent implements OnInit {
     {
       this.ueForm.salle=new Salle();
     }
+=======
+  listFiliere():Array<Filiere> {
+    return this.filierService.findAll();
+
+  }
+
+
+
+  add() {
+    this.ueForm = new UE();
+    this.ueForm.filiere=new Filiere();
+
+  }
+
+  edit(id: number) {
+    this.ueForm = this.ueService.findById(id);
+    // = new Stagiaire(stagiare.id,stagiare.version,stagiare.civilite,stagiare.nom,stagiare.prenom,stagiare.email,stagiare.telephone,stagiare.niveauEtude, stagiare.dtNaissance,stagiare.adr);
+    if (!this.ueForm.filiere) {
+      this.ueForm.filiere = new Filiere();
+    }
+
+>>>>>>> Stashed changes
   }
 
   save() {
@@ -83,6 +127,7 @@ export class UEComponent implements OnInit {
     this.ueForm = null;
   }
 
+<<<<<<< Updated upstream
   delete(id:number)
   {
     this.ueService.deleteById(id).subscribe(resp => {
@@ -96,4 +141,16 @@ export class UEComponent implements OnInit {
   ngOnInit(): void {
   }
 
+=======
+  cancel() {
+    this.ueForm = null;
+  }
+
+  delete(id:number)
+  {
+    this.ueService.deleteById(id);
+  }
+
+
+>>>>>>> Stashed changes
 }

@@ -34,6 +34,7 @@ export class FormateurComponent implements OnInit {
   add() {
     this.formateurForm = new Formateur();
     this.formateurForm.adresse=new Adresse();
+<<<<<<< Updated upstream
     this.formateurForm.competences=new Array<Matiere>();
   }
 
@@ -48,6 +49,14 @@ export class FormateurComponent implements OnInit {
         console.log(response);
       },
       error=>console.log(error));
+=======
+  }
+
+  edit(id: number) {
+    this.formateurForm =this.formateurService.findById(id);
+   // let adresse : Adresse = new Adresse(formateur.adr.rue,formateur.adr.complement,formateur.adr.codePostal,formateur.adr.ville);
+     //new Formateur(formateur.id, formateur.version, formateur.civilite, formateur.nom, formateur.prenom,formateur.email,formateur.telephone,formateur.experience,formateur.adr);
+>>>>>>> Stashed changes
   }
 
   delete(id:number)

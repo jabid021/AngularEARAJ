@@ -1,7 +1,13 @@
+<<<<<<< Updated upstream
 <p>ue works!</p>
 <div class="card mt-3">
   <div class="card-header bg-info text-white">
     <h2>Liste des UE</h2>
+=======
+<div class="card mt-3">
+  <div class="card-header bg-info text-white">
+    <h2>Liste des UEs</h2>
+>>>>>>> Stashed changes
   </div>
   <div class="card-body">
     <table class="table table-striped">
@@ -10,12 +16,18 @@
         <th>Identifiant</th>
         <th>Version</th>
         <th>Code</th>
+<<<<<<< Updated upstream
         <th>Durée</th>
         <th>Ordre</th>
         <th>Filiere</th>
         <th>Formateur</th>
         <th>Matière</th>
         <th>Salle</th>
+=======
+        <th>Duree</th>
+        <th>Ordre</th>
+        <th></th>
+>>>>>>> Stashed changes
       </tr>
       </thead>
       <tbody>
@@ -25,6 +37,7 @@
         <td>{{ue.code}}</td>
         <td>{{ue.duree}}</td>
         <td>{{ue.ordre}}</td>
+<<<<<<< Updated upstream
         <td>{{ue.filiere?.id}} - {{ue.filiere?.intitule}}</td>
         <td>{{ue.formateur?.id}} - {{ue.formateur?.nom}}</td>
         <td>{{ue.matiere?.id}} - {{ue.matiere?.nom}}</td>
@@ -33,6 +46,12 @@
           <div class="btn-group btn-group-sm">
             <a class="btn btn-primary" (click)="edit(ue.id)"><i class="fa fa-edit"></i></a>
             <a class="btn btn-danger" (click)="delete(ue.id)" ><i class="fa fa-trash"></i></a>
+=======
+        <td>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-primary" (click)="edit(ue.id)"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-danger" (click)="delete(ue.id)"><i class="fa fa-trash"></i></a>
+>>>>>>> Stashed changes
           </div>
         </td>
       </tr>
@@ -47,20 +66,33 @@
 
   <div class="card mt-3" *ngIf="ueForm">
     <div class="card-header bg-info text-white">
+<<<<<<< Updated upstream
       <h3>Edition d'une UE</h3>
     </div>
 
     <div class="card-body">
+=======
+      <h3>Edition du Ue</h3>
+    </div>
+
+    <div class="card-body">
+
+>>>>>>> Stashed changes
       <div class="form-group">
         <label for="code">Code :</label>
         <input type="text" class="form-control" id="code" [(ngModel)]="ueForm.code">
       </div>
       <div class="form-group">
+<<<<<<< Updated upstream
         <label for="duree">Durée :</label>
+=======
+        <label for="duree">Duree :</label>
+>>>>>>> Stashed changes
         <input type="text" class="form-control" id="duree" [(ngModel)]="ueForm.duree">
       </div>
       <div class="form-group">
         <label for="ordre">Ordre :</label>
+<<<<<<< Updated upstream
         <input type="text" class="form-control" id="ordre" [(ngModel)]="ueForm.ordre" >
       </div>
       <div class="form-group">
@@ -106,3 +138,32 @@
     </div>
 
   </div>
+=======
+        <input type="text" class="form-control" id="ordre" [(ngModel)]="ueForm.ordre">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="filiere">Filiere:</label>
+      <select class="form-control" id="filiere" [(ngModel)]="ueForm.filiere.id">
+        <option value="">Choisir une filiere</option>
+        <option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>
+      </select>
+    </div>
+
+
+    <div class="card-footer">
+      <div class="btn-group btn-group-lg float-right">
+        <a class="btn btn-success" (click)="save()">
+          <i class="fa fa-check"></i>
+        </a>
+        <a class="btn btn-warning" (click)="cancel()">
+          <i class="fa fa-sync"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+>>>>>>> Stashed changes

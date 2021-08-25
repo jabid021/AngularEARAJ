@@ -1,11 +1,17 @@
 import {Injectable} from '@angular/core';
 import {Evaluation} from "../model/evaluation";
+<<<<<<< Updated upstream
 import {Filiere} from "../model/filiere";
+=======
+>>>>>>> Stashed changes
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AppConfigService} from "../app-config.service";
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 @Injectable({
   providedIn: 'root'
 })

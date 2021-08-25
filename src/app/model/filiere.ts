@@ -10,6 +10,7 @@ export class Filiere {
   dispositif:string;
   formateur:Formateur;
 
+
   constructor(id?: number, version?: number, intitule?:string,promotion?:string,dtDebut?:Date,duree?:number,dispositif?:string) {
     this.id = id;
     this.version = version;

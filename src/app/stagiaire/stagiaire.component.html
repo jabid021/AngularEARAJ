@@ -13,10 +13,7 @@
         <th>Prenom</th>
         <th>Email</th>
         <th>Telephone</th>
-        <th>Rue</th>
-        <th>Complement adresse</th>
-        <th>Ville</th>
-        <th>Code postal</th>
+        <th>Adresse</th>
         <th>Date naissance</th>
         <th>Niveau Etude</th>
         <th>Evaluation</th>
@@ -34,10 +31,14 @@
         <td>{{stagiaire.prenom}}</td>
         <td>{{stagiaire.email}}</td>
         <td>{{stagiaire.telephone}}</td>
+<<<<<<< Updated upstream
         <td>{{stagiaire.adresse?.rue}}</td>
         <td>{{stagiaire.adresse?.complement}}</td>
         <td>{{stagiaire.adresse?.codePostal}}</td>
         <td>{{stagiaire.adresse?.ville}}</td>
+=======
+        <td>{{stagiaire.adresse?.rue}}, {{stagiaire.adresse?.complement}}, {{stagiaire.adresse?.codePostal}}, {{stagiaire.adresse?.ville}}</td>
+>>>>>>> Stashed changes
         <td>{{stagiaire.dtNaissance |date}}</td>
         <td>{{stagiaire.niveauEtude}}</td>
         <td>{{stagiaire.evaluation?.id}} - {{stagiaire.evaluation?.commentaires}}</td>
@@ -128,16 +129,17 @@
         <label for="evaluation">Evaluation:</label>
         <select class="form-control" id="evaluation" [(ngModel)]="stagiaireForm.evaluation.id">
           <option value="">Choisir une évaluation</option>
-          <option *ngFor="let eval of listEvaluation()" [value]="eval.id">{{eval.id}} - {{eval.commentaires}}</option>
+          <!--<option *ngFor="let eval of listEvaluation()" [value]="eval.id">{{eval.id}} - {{eval.commentaires}}</option>-->
         </select>
       </div>
 
 
+
       <div class="form-group">
-        <label for="filiere">Filiere:</label>
+        <label for="filiere">Evaluation:</label>
         <select class="form-control" id="filiere" [(ngModel)]="stagiaireForm.filiere.id">
-          <option value="">Choisir une Filiere</option>
-          <option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>
+          <option value="">Choisir une évaluation</option>
+          <!--<option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>-->
         </select>
       </div>
 

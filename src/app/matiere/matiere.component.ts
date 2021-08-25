@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Matiere} from "../model/matiere";
+<<<<<<< Updated upstream
 import {MatiereServiceHTTP} from "./matiere-http.service";
+=======
+import {MatiereService} from "./matiere.service";
+import {MatiereHttpService} from "./matiere-http.service";
+>>>>>>> Stashed changes
 
 
 @Component({
@@ -12,8 +17,12 @@ export class MatiereComponent implements OnInit {
 
   matiereForm: Matiere = null;
 
+<<<<<<< Updated upstream
   constructor(private matiereService: MatiereServiceHTTP) {
   }
+=======
+  constructor(private matiereService: MatiereHttpService) { }
+>>>>>>> Stashed changes
 
   ngOnInit(): void {
   }
@@ -28,6 +37,7 @@ export class MatiereComponent implements OnInit {
   }
 
   edit(id: number) {
+<<<<<<< Updated upstream
     this.matiereService.findById(id).subscribe(response=>
       {
         this.matiereForm=response;
@@ -44,6 +54,18 @@ export class MatiereComponent implements OnInit {
         console.log(response);
       },
       error=>console.log(error));
+=======
+    this.matiereService.findById(id).subscribe(resp=>{
+      this.matiereForm=resp;
+    });
+
+  }
+
+  delete(id: number) {
+    this.matiereService.deleteById(id).subscribe(resp => {
+      this.matiereService.load();
+    }, error => console.log(error));
+>>>>>>> Stashed changes
   }
   save() {
     if (this.matiereForm.id) {

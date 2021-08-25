@@ -78,11 +78,10 @@
         <label for="formateur">Formateur:</label>
         <select class="form-control" id="formateur" [(ngModel)]="filiereForm.formateur.id">
           <option value="">Choisir un formateur</option>
-          <option *ngFor="let forma of listFormateur()" [value]="forma.id">{{forma.id}} - {{forma.nom}}- {{forma.prenom}}</option>
+         <!-- <option *ngFor="let forma of listFormateur()" [value]="forma.id">{{forma.id}} - {{forma.nom}}- {{forma.prenom }}</option>
+        -->
         </select>
       </div>
-
-
 
     <div class="card-footer">
       <div class="btn-group btn-group-lg float-right">

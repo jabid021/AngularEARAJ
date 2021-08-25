@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< Updated upstream
 import {Salle} from "../model/salle";
 import {SalleService} from "./salle-service.service";
 import {Adresse} from "../model/adresse";
 import {SallehttpService} from "./sallehttp.service";
+=======
+import {Salle} from "../model/Salle";
+import {Adresse} from "../model/adresse";
+import {SalleHttpService} from "./salle-http.service";
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'salle',
@@ -13,24 +19,35 @@ export class SalleComponent implements OnInit {
 
   salleForm: Salle = null;
 
+<<<<<<< Updated upstream
   constructor(private salleService: SallehttpService) { }
+=======
+  constructor(private salleService: SalleHttpService) { }
+>>>>>>> Stashed changes
 
   ngOnInit(): void {
   }
 
-  list(): any {
+  list(): Array<Salle> {
     return this.salleService.findAll();
   }
 
   add() {
     this.salleForm = new Salle();
-    this.salleForm.adresse=new Adresse();
+    this.salleForm.adr=new Adresse();
   }
 
   edit(id: number) {
+<<<<<<< Updated upstream
     this.salleService.findById(id).subscribe(resp => {
       this.salleForm=resp;
     })
+=======
+    this.salleService.findById(id).subscribe(resp=>{
+      this.salleForm=resp;
+    });
+
+>>>>>>> Stashed changes
   }
 
   delete(id:number){
