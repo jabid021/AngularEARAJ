@@ -15,7 +15,7 @@ import {FiliereService} from "../filiere/filiere.service";
 export class StagiaireComponent implements OnInit {
   stagiaireForm:Stagiaire=null;
 
-  constructor(private stagService:StagiaireService, private evaluationService: EvaluationService, private filiereService: FiliereService) { }
+  constructor(private stagService:StagiaireService,private evaluationService:EvaluationService,private filiereService:FiliereService) { }
 
   ngOnInit(): void {
   }
@@ -28,19 +28,20 @@ export class StagiaireComponent implements OnInit {
     return this.evaluationService.findAll();
   }
 
-  listFiliere(): Array<Filiere> {
+  listFiliere():Array<Filiere>{
     return this.filiereService.findAll();
-  }
+}
 
   add() {
     this.stagiaireForm = new Stagiaire();
     this.stagiaireForm.adr = new Adresse();
     this.stagiaireForm.evaluation = new Evaluation();
-    this.stagiaireForm.filiere = new Filiere();
+    this.stagiaireForm.filiere=new Filiere();
   }
 
   edit(id: number) {
     this.stagiaireForm = this.stagService.findById(id);
+     //= new Stagiaire(stagiare.id,stagiare.version,stagiare.civilite,stagiare.nom,stagiare.prenom,stagiare.email,stagiare.telephone,stagiare.niveauEtude, stagiare.dtNaissance,stagiare.adr);
     if (!this.stagiaireForm.adr) {
       this.stagiaireForm.adr = new Adresse();
     }
@@ -50,6 +51,7 @@ export class StagiaireComponent implements OnInit {
     if (!this.stagiaireForm.filiere) {
       this.stagiaireForm.filiere = new Filiere();
     }
+
   }
 
   save() {
