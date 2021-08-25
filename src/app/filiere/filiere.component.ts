@@ -5,6 +5,7 @@ import {Evaluation} from "../model/evaluation";
 import {FormateurService} from "../formateur/formateur.service";
 import {Formateur} from "../model/formateur";
 import {Adresse} from "../model/adresse";
+import {FiliereHttpService} from "./filiere-http.service";
 
 @Component({
   selector: 'filiere',
@@ -13,7 +14,8 @@ import {Adresse} from "../model/adresse";
 })
 export class FiliereComponent implements OnInit {
   filiereForm : Filiere =null;
-  constructor(private filiereService: FiliereService,private formateurService:FormateurService) {
+
+  constructor(private filiereService: FiliereHttpService,private formateurService:FormateurHttpService) {
 
   }
 
@@ -37,7 +39,9 @@ export class FiliereComponent implements OnInit {
 
   edit(id: number) {
 
-    this.filiereForm = this.filiereService.findById(id);
+    this.filiereService.findById(id).subscribe(resp => {
+      this.filiereForm = resp;
+    })
     if (!this.filiereForm.formateur) {
       this.filiereForm.formateur= new Formateur();
     }
@@ -57,7 +61,9 @@ export class FiliereComponent implements OnInit {
 
   delete(id:number)
   {
-    this.filiereService.deleteById(id);
+    this.filiereService.deleteById(id).subscribe(resp => {
+      this.filiereService.load();
+    }, error => console.log(error));
   }
 
   cancel() {

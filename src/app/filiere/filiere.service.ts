@@ -1,12 +1,14 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Filiere} from "../model/Filiere";
+import {FormateurService} from "../formateur/formateur.service";
+import {Formateur} from "../model/formateur";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FiliereService implements OnInit {
   filieres: Array<Filiere> = new Array<Filiere>();
-  constructor() {
+  constructor(private formateurService: FormateurService) {
     this.filieres.push(new Filiere(1,0,"Dream Team 2019","TPT1",new Date(2019,1,2, 12,34,56),15,"POEI"));
     this.filieres.push(new Filiere(2,0,"Dream Team 2020","TPT2",new Date(2020,1,2, 12,34,56),15,"POEC"));
     this.filieres.push(new Filiere(3,0,"Dream Team 2021","TPT3",new Date(2021,1,2, 12,34,56),15,"PROA"));
@@ -43,6 +45,10 @@ export class FiliereService implements OnInit {
       }
     }
     if (find) {
+      if(filiere.formateur && filiere.formateur.id) {
+          let formateur: Formateur = this.formateurService.findById( filiere.formateur.id);
+          filiere.formateur = formateur;
+      }
       filiere.version++;
       this.filieres[indice] = filiere;
     }
