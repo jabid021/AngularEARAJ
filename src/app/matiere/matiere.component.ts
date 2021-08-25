@@ -15,7 +15,7 @@ export class MatiereComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  list(): any {
+  list(): Array<Matiere> {
     return this.matiereService.findAll();
   }
 
@@ -26,6 +26,11 @@ export class MatiereComponent implements OnInit {
   edit(id: number) {
     let matiere: Matiere = this.matiereService.findById(id);
     this.matiereForm = new Matiere(matiere.id, matiere.version, matiere.nom, matiere.duree);
+  }
+
+  delete(id:number)
+  {
+    this.matiereService.deleteById(id);
   }
 
   save() {
