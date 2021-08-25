@@ -21,9 +21,10 @@ export class FiliereComponent implements OnInit {
   }
 
 
-  list(): any {
+  list(): Array<Filiere> {
     return this.filiereService.findAll();
   }
+
 
   listFormateur():Array<Formateur>{
     return this.formateurService.findAll()
