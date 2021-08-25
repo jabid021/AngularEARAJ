@@ -25,7 +25,7 @@ import { UEComponent } from './ue/ue.component';
     SalleComponent,
     MatiereComponent,
     FormateurComponent,
-    UEComponent
+    UEComponent,
   ],
   imports: [
     BrowserModule,

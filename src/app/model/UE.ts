@@ -13,6 +13,7 @@ export class UE
   filiere:Filiere;
   formateur:Formateur;
   matiere:Matiere;
+  salle:Salle;
 
   constructor(id?: number, version?: number, code?: number, duree?: number, ordre?: number) {
     this.id = id;

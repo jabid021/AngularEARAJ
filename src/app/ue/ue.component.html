@@ -12,6 +12,10 @@
         <th>Code</th>
         <th>Durée</th>
         <th>Ordre</th>
+        <th>Filiere</th>
+        <th>Formateur</th>
+        <th>Matière</th>
+        <th>Salle</th>
       </tr>
       </thead>
       <tbody>
@@ -21,6 +25,10 @@
         <td>{{ue.code}}</td>
         <td>{{ue.duree}}</td>
         <td>{{ue.ordre}}</td>
+        <td>{{ue.filiere?.id}} - {{ue.filiere?.intitule}}</td>
+        <td>{{ue.formateur?.id}} - {{ue.formateur?.nom}}</td>
+        <td>{{ue.matiere?.id}} - {{ue.matiere?.nom}}</td>
+        <td>{{ue.salle?.id}} - {{ue.salle?.nom}}</td>
         <td>
           <div class="btn-group btn-group-sm">
             <a class="btn btn-primary" (click)="edit(ue.id)"><i class="fa fa-edit"></i></a>
@@ -54,6 +62,34 @@
       <div class="form-group">
         <label for="ordre">Ordre :</label>
         <input type="text" class="form-control" id="ordre" [(ngModel)]="ueForm.ordre" >
+      </div>
+      <div class="form-group">
+        <label for="filiere">Filiere:</label>
+        <select class="form-control" id="filiere" [(ngModel)]="ueForm.filiere.id">
+          <option value="">Choisir une Filiere</option>
+          <option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="formateur">Formateur:</label>
+        <select class="form-control" id="formateur" [(ngModel)]="ueForm.formateur.id">
+          <option value="">Choisir une Formateur</option>
+          <option *ngFor="let form of listFormateur()" [value]="form.id">{{form.id}} - {{form.nom}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="matiere">Matière:</label>
+        <select class="form-control" id="matiere" [(ngModel)]="ueForm.matiere.id">
+          <option value="">Choisir une Matière</option>
+          <option *ngFor="let mat of listMatiere()" [value]="mat.id">{{mat.id}} - {{mat.nom}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="salle">Salle:</label>
+        <select class="form-control" id="salle" [(ngModel)]="ueForm.salle.id">
+          <option value="">Choisir une Salle</option>
+          <option *ngFor="let sal of listSalle()" [value]="sal.id">{{sal.id}} - {{sal.nom}}</option>
+        </select>
       </div>
 
       <div class="card-footer">
