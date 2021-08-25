@@ -10,6 +10,9 @@ export class UE
   code:number;
   duree:number;
   ordre:number;
+  filiere:Filiere;
+  formateur:Formateur;
+  matiere:Matiere;
 
   constructor(id?: number, version?: number, code?: number, duree?: number, ordre?: number) {
     this.id = id;
