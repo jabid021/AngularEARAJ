@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Filiere} from "../model/filiere";
+import {FiliereService} from "./filiere.service";
+import {Evaluation} from "../model/evaluation";
+import {FormateurService} from "../formateur/formateur.service";
 import {Formateur} from "../model/formateur";
 import {FiliereHttpService} from "./filiere-http.service";
 import {FormateurServiceHTTP} from "../formateur/formateur-http.service";
