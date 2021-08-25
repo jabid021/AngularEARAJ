@@ -6,6 +6,8 @@ import {FormateurService} from "../formateur/formateur.service";
 import {Formateur} from "../model/formateur";
 import {FiliereHttpService} from "./filiere-http.service";
 import {FormateurServiceHTTP} from "../formateur/formateur-http.service";
+import {UeService} from "../ue/ue.service";
+import {UE} from "../model/UE";
 
 @Component({
   selector: 'filiere',
@@ -15,7 +17,7 @@ import {FormateurServiceHTTP} from "../formateur/formateur-http.service";
 export class FiliereComponent implements OnInit {
   filiereForm : Filiere =null;
 
-  constructor(private filiereService: FiliereHttpService,private formateurService:FormateurServiceHTTP) {
+  constructor(private filiereService: FiliereHttpService,private formateurService:FormateurServiceHTTP, private ueService:UeService) {
 
   }
 
@@ -34,7 +36,8 @@ export class FiliereComponent implements OnInit {
 
   add() {
     this.filiereForm = new Filiere();
-    this.filiereForm.formateur=new Formateur();
+    this.filiereForm.referent=null;
+    this.filiereForm.ues= null;
   }
 
   edit(id: number) {
@@ -42,8 +45,8 @@ export class FiliereComponent implements OnInit {
     this.filiereService.findById(id).subscribe(resp => {
       this.filiereForm = resp;
     })
-    if (!this.filiereForm.formateur) {
-      this.filiereForm.formateur= new Formateur();
+    if (!this.filiereForm.referent) {
+      this.filiereForm.referent= new Formateur();
     }
 
   }

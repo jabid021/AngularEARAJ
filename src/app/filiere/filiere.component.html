@@ -25,7 +25,7 @@
         <td>{{filiere.dtDebut | date:'dd/MM/yyyy'}}</td>
         <td>{{filiere.duree}}</td>
         <td>{{filiere.dispositif}}</td>
-        <td>{{filiere.formateur?.id}} {{filiere.formateur?.nom}}</td>
+        <td>{{filiere.referent?.id}} {{filiere.referent?.nom}}</td>
         <td>
           <div class="btn-group btn-group-sm">
             <a class="btn btn-primary" (click)="edit(filiere.id)"><i class="fa fa-edit"></i></a>
@@ -75,10 +75,10 @@
     </div>
 
       <div class="form-group">
-        <label for="formateur">Formateur:</label>
-        <select class="form-control" id="formateur" [(ngModel)]="filiereForm.formateur.id">
+        <label for="referent">Formateur:</label>
+        <select class="form-control" id="referent" [(ngModel)]="filiereForm.referent.id">
           <option value="">Choisir un formateur</option>
-          <option *ngFor="let forma of listFormateur()" [value]="forma.id">{{forma.id}} - {{forma.nom}}- {{forma.prenom}}</option>
+          <option *ngFor="let forma of listFormateur()" [value]="forma.id">{{forma?.id}} - {{forma?.nom}}- {{forma?.prenom}}</option>
         </select>
       </div>
 

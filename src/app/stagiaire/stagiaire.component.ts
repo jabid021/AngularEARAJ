@@ -39,7 +39,7 @@ export class StagiaireComponent implements OnInit {
     this.stagiaireForm = new Stagiaire();
     this.stagiaireForm.adresse = new Adresse();
     this.stagiaireForm.evaluation = new Evaluation();
-    this.stagiaireForm.filiere=new Filiere();
+    this.stagiaireForm.filiere= new Filiere();
   }
 
   edit(id: number) {

@@ -60,7 +60,7 @@
 
   <div class="card mt-3" *ngIf="stagiaireForm">
     <div class="card-header bg-info text-white">
-      <h3>Edition du formateur</h3>
+      <h3>Edition du Stagiaire</h3>
     </div>
 
     <div class="card-body">
@@ -129,7 +129,7 @@
         <label for="evaluation">Evaluation:</label>
         <select class="form-control" id="evaluation" [(ngModel)]="stagiaireForm.evaluation.id">
           <option value="">Choisir une évaluation</option>
-          <option *ngFor="let eval of listEvaluation()" [value]="eval.id">{{eval.id}} - {{eval.commentaires}}</option>
+          <option *ngFor="let eval of listEvaluation()" [value]="eval?.id">{{eval?.id}} - {{eval?.commentaires}}</option>
         </select>
       </div>
 
@@ -138,7 +138,7 @@
         <label for="filiere">Filiere:</label>
         <select class="form-control" id="filiere" [(ngModel)]="stagiaireForm.filiere.id">
           <option value="">Choisir une Filiere</option>
-          <option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>
+          <option *ngFor="let fil of listFiliere()" [value]="fil?.id">{{fil?.id}} - {{fil?.intitule}}</option>
         </select>
       </div>
 

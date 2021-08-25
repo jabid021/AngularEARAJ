@@ -45,9 +45,9 @@ export class FiliereService implements OnInit {
       }
     }
     if (find) {
-      if(filiere.formateur && filiere.formateur.id) {
-          let formateur: Formateur = this.formateurService.findById( filiere.formateur.id);
-          filiere.formateur = formateur;
+      if(filiere.referent && filiere.referent.id) {
+          let referent: Formateur = this.formateurService.findById( filiere.referent.id);
+          filiere.referent = referent;
       }
       filiere.version++;
       this.filieres[indice] = filiere;
