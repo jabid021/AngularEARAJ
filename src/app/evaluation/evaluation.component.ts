@@ -17,7 +17,7 @@ export class EvaluationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  list(): any {
+  list(): Array<Evaluation> {
     return this.evaluationService.findAll();
   }
 
