@@ -25,7 +25,7 @@ import { UEComponent } from './ue/ue.component';
     StagiaireComponent,
     SalleComponent,
     MatiereComponent,
-    CheckedPipe
+    CheckedPipe,
     FormateurComponent,
     UEComponent
   ],
