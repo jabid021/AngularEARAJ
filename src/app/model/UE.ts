@@ -1,7 +1,7 @@
 import {Matiere} from "./matiere";
 import {Formateur} from "./formateur";
 import {Filiere} from "./filiere";
-import {Salle} from "./Salle";
+import {Salle} from "./salle";
 
 export class UE
 {
