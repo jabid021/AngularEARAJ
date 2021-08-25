@@ -5,6 +5,7 @@ import {Adresse} from "../model/adresse";
 import {MatiereService} from "../matiere/matiere.service";
 import {Matiere} from "../model/matiere";
 import {FormateurServiceHTTP} from "./formateur-http.service";
+import {MatiereServiceHTTP} from "../matiere/matiere-http.service";
 
 @Component({
   selector: 'formateur',
@@ -15,7 +16,7 @@ export class FormateurComponent implements OnInit {
 
   formateurForm: Formateur = null;
 
-  constructor(private formateurService: FormateurServiceHTTP,private matiereService:MatiereService) {
+  constructor(private formateurService: FormateurServiceHTTP,private matiereService:MatiereServiceHTTP) {
   }
 
   ngOnInit(): void {
@@ -40,6 +41,10 @@ export class FormateurComponent implements OnInit {
    this.formateurService.findById(id).subscribe(response=>
       {
         this.formateurForm=response;
+        if(this.formateurForm.adresse==null)
+        {
+          this.formateurForm.adresse=new Adresse();
+        }
         console.log(response);
       },
       error=>console.log(error));
@@ -64,14 +69,14 @@ export class FormateurComponent implements OnInit {
     this.formateurForm = null;
   }
 
-  checkMatiere(id:number,event:any)
+  checkMatiere(matiere:Matiere,event:any)
   {
     if(event.checked) {
-      this.formateurForm.competences.push(this.matiereService.findById(id));
+      this.formateurForm.competences.push(matiere);
     }
     else
     {
-      this.removeMatiere(id);
+      this.removeMatiere(matiere.id);
     }
   }
 
