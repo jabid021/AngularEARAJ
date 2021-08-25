@@ -10,9 +10,10 @@ import {StagiaireComponent} from "./stagiaire/stagiaire.component";
 const routes: Routes = [
   {path: "accueil", component: AccueilComponent},
   {path: "evaluation", component: EvaluationComponent},
-  {path : "matiere", component : MatiereComponent}
+  {path : "matiere", component : MatiereComponent},
   {path : "salle", component: SalleComponent},
   {path : "formateur", component: FormateurComponent},
+  {path : "stagiaire", component: StagiaireComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 
