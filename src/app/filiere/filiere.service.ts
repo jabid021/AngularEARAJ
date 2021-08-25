@@ -1,5 +1,5 @@
 import {Injectable, OnInit} from '@angular/core';
-import {Filiere} from "../model/filiere";
+import {Filiere} from "../model/Filiere";
 import {FormateurService} from "../formateur/formateur.service";
 import {Formateur} from "../model/formateur";
 
