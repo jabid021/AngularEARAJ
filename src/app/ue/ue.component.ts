@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Filiere} from "../model/Filiere";
+import {Filiere} from "../model/filiere";
 import {UE} from "../model/UE";
 import {UeService} from "./ue.service";
 import {FiliereService} from "../filiere/filiere.service";
@@ -7,7 +7,7 @@ import {FormateurService} from "../formateur/formateur.service";
 import {MatiereService} from "../matiere/matiere.service";
 import {SalleService} from "../salle/salle-service.service";
 import {Matiere} from "../model/matiere";
-import {Salle} from "../model/Salle";
+import {Salle} from "../model/salle";
 import {Formateur} from "../model/formateur";
 
 @Component({

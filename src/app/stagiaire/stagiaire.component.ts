@@ -4,7 +4,7 @@ import {StagiaireService} from "./stagiaire.service";
 import {Adresse} from "../model/adresse";
 import {Evaluation} from "../model/evaluation";
 import {EvaluationService} from "../evaluation/evaluation.service";
-import {Filiere} from "../model/Filiere";
+import {Filiere} from "../model/filiere";
 import {FiliereService} from "../filiere/filiere.service";
 
 @Component({
