@@ -24,7 +24,7 @@ export class FormateurServiceHTTP {
   }
 
   findById(id: number): Observable<Formateur> {
-    return this.http.get<Formateur>(this.chemin + id);
+    return this.http.get<Formateur>(this.chemin + id+"/with-matiere");
   }
 
   create(formateur: Formateur) {
