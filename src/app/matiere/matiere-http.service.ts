@@ -5,28 +5,31 @@ import {MatiereService} from "../matiere/matiere.service";
 import {Matiere} from "../model/matiere";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {AppConfigService} from "../app-config.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class FormateurServiceHTTP {
+export class MatiereServiceHTTP {
 
-  formateurs: Array<Formateur> = new Array<Formateur>();
-
-  constructor(private matiereService:MatiereService,private http : HttpClient) {
+  matieres: Array<Matiere> = new Array<Matiere>();
+  chemin:string;
+  constructor(private matiereService:MatiereService,private http : HttpClient,private appconfig:AppConfigService) {
     this.load();
+    this.chemin=this.appconfig.backEndUrl+"matiere/";
+
   }
 
-  findAll(): Array<Formateur> {
-    return this.formateurs;
+  findAll(): Array<Matiere> {
+    return this. matieres;
   }
 
-  findById(id: number): Observable<Formateur> {
-    return this.http.get<Formateur>("http://localhost:8080/formateur" + id);
+  findById(id: number): Observable<Matiere> {
+    return this.http.get<Matiere>(this.chemin + id);
   }
 
-  create(formateur: Formateur) {
-    this.http.post<Array<Formateur>>("http://localhost:8080/formateur",formateur).subscribe(response=>
+  create(matiere: Matiere) {
+    this.http.post<Array<Matiere>>(this.chemin,matiere).subscribe(response=>
       {
         this.load();
         console.log(response);
@@ -34,8 +37,8 @@ export class FormateurServiceHTTP {
       error=>console.log(error));
   }
 
-  modify(formateur: Formateur) {
-    this.http.put<Array<Formateur>>("http://localhost:8080/formateur/"+formateur.id,formateur).subscribe(response=>
+  modify(matiere: Matiere) {
+    this.http.put<Array<Matiere>>(this.chemin+matiere.id,matiere).subscribe(response=>
       {
         this.load();
         console.log(response);
@@ -44,15 +47,15 @@ export class FormateurServiceHTTP {
   }
 
   deleteById(id: number) : Observable<void> {
-   return  this.http.delete<void>("http://localhost:8080/formateur/"+id);
+   return  this.http.delete<void>(this.chemin+id);
   }
 
 
   load()
   {
-    this.http.get<Array<Formateur>>("http://localhost:8080/formateur").subscribe(response=>
+    this.http.get<Array<Matiere>>(this.chemin).subscribe(response=>
       {
-        this.formateurs=response;
+        this.matieres=response;
         console.log(response);
       },
       error=>console.log(error));

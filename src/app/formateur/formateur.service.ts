@@ -12,6 +12,7 @@ export class FormateurService {
   formateurs: Array<Formateur> = new Array<Formateur>();
 
   constructor(private matiereService:MatiereService) {
+
     let adresse : Adresse = new Adresse("6 rue rougemont","","75009","Paris");
     let adresse2 : Adresse = new Adresse("6 rue rougemont","","75009","Paris");
     let adresse3 : Adresse = new Adresse("6 rue rougemont","","75009","Paris");
@@ -73,4 +74,5 @@ export class FormateurService {
       this.formateurs.splice(indice, 1);
     }
   }
+
 }

@@ -4,6 +4,7 @@ import {Formateur} from "../model/formateur";
 import {Adresse} from "../model/adresse";
 import {MatiereService} from "../matiere/matiere.service";
 import {Matiere} from "../model/matiere";
+import {FormateurServiceHTTP} from "./formateur-http.service";
 
 @Component({
   selector: 'formateur',
@@ -14,7 +15,7 @@ export class FormateurComponent implements OnInit {
 
   formateurForm: Formateur = null;
 
-  constructor(private formateurService: FormateurService,private matiereService:MatiereService) {
+  constructor(private formateurService: FormateurServiceHTTP,private matiereService:MatiereService) {
   }
 
   ngOnInit(): void {
@@ -36,14 +37,22 @@ export class FormateurComponent implements OnInit {
   }
 
   edit(id: number) {
-    let formateur: Formateur = this.formateurService.findById(id);
-    let adresse : Adresse = new Adresse(formateur.adr.rue,formateur.adr.complement,formateur.adr.codePostal,formateur.adr.ville);
-    this.formateurForm = new Formateur(formateur.id, formateur.version, formateur.civilite, formateur.nom, formateur.prenom,formateur.email,formateur.telephone,formateur.experience,formateur.adr,formateur.matieres);
+   this.formateurService.findById(id).subscribe(response=>
+      {
+        this.formateurForm=response;
+        console.log(response);
+      },
+      error=>console.log(error));
   }
 
   delete(id:number)
   {
-    this.formateurService.deleteById(id);
+    this.formateurService.deleteById(id).subscribe(response=>
+      {
+       this.formateurService.load();
+        console.log(response);
+      },
+      error=>console.log(error));
   }
   save() {
     if (this.formateurForm.id) {
@@ -54,6 +63,7 @@ export class FormateurComponent implements OnInit {
 
     this.formateurForm = null;
   }
+
   checkMatiere(id:number,event:any)
   {
     if(event.checked) {
@@ -64,8 +74,6 @@ export class FormateurComponent implements OnInit {
       this.removeMatiere(id);
     }
   }
-
-
 
     removeMatiere(id:number)
     {
