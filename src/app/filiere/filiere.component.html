@@ -56,16 +56,20 @@
       </div>
       <div class="form-group">
         <label for="dtDebut">Date de début :</label>
-        <input type="date" class="form-control" id="dtDebut" [ngModel]="filiereForm.dtDebut | date : 'dd/mm/yyyy'" (ngModelChange)="filiereForm.dtDebut=$event" )>
+        <input type="date" class="form-control" id="dtDebut" [ngModel]="filiereForm.dtDebut | date : 'yyyy-MM-dd'" (ngModelChange)="filiereForm.dtDebut=$event" >
       </div>
       <div class="form-group">
         <label for="duree">Durée" :</label>
         <input type="number" class="form-control" id="duree" [(ngModel)]="filiereForm.duree">
       </div>
       <div class="form-group">
-        <label for="dispositif">Dispositif :</label>
-        <input type="text" class="form-control" id="dispositif" [(ngModel)]="filiereForm.dispositif">
-      </div>
+        <select class="form-control" id="dispositif" [(ngModel)]="filiereForm.dispositif">
+          <option value="">Choisir un dispositif</option>
+          <option value="CPRO">CPRO</option>
+          <option value="POEI">POEI</option>
+          <option value="POEC">POEC</option>
+          <option value="PROA">PROA</option>
+        </select>
     </div>
 
     <div class="card-footer">
