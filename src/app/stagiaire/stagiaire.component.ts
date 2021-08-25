@@ -6,6 +6,7 @@ import {Evaluation} from "../model/evaluation";
 import {EvaluationService} from "../evaluation/evaluation.service";
 import {Filiere} from "../model/Filiere";
 import {FiliereService} from "../filiere/filiere.service";
+import {StagiaireHttpService} from "./stagiaire-http.service";
 
 @Component({
   selector: 'app-stagiaire',
@@ -15,7 +16,7 @@ import {FiliereService} from "../filiere/filiere.service";
 export class StagiaireComponent implements OnInit {
   stagiaireForm:Stagiaire=null;
 
-  constructor(private stagService:StagiaireService,private evaluationService:EvaluationService,private filiereService:FiliereService) { }
+  constructor(private stagService:StagiaireHttpService,private filiereService:FiliereService, private  evaluationService:EvaluationService) { }
 
   ngOnInit(): void {
   }
@@ -40,18 +41,12 @@ export class StagiaireComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.stagiaireForm = this.stagService.findById(id);
-     //= new Stagiaire(stagiare.id,stagiare.version,stagiare.civilite,stagiare.nom,stagiare.prenom,stagiare.email,stagiare.telephone,stagiare.niveauEtude, stagiare.dtNaissance,stagiare.adr);
-    if (!this.stagiaireForm.adresse) {
-      this.stagiaireForm.adresse = new Adresse();
-    }
-    if (!this.stagiaireForm.evaluation) {
-      this.stagiaireForm.evaluation = new Evaluation();
-    }
-    if (!this.stagiaireForm.filiere) {
-      this.stagiaireForm.filiere = new Filiere();
-    }
-
+    this.stagService.findById(id).subscribe(response=>
+      {
+        this.stagiaireForm=response;
+        console.log(response);
+      },
+      error=>console.log(error));
   }
 
   save() {
