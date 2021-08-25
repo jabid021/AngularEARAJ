@@ -13,6 +13,7 @@ import { MatiereComponent } from './matiere/matiere.component';
 import { SalleComponent } from './salle/salle.component';
 import {SalleService} from "./salle/salle-service.service";
 import { FormateurComponent } from './formateur/formateur.component';
+import { CheckedPipe } from './checked.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormateurComponent } from './formateur/formateur.component';
     StagiaireComponent,
     SalleComponent,
     MatiereComponent,
-    FormateurComponent
+    FormateurComponent,
+    CheckedPipe
   ],
   imports: [
     BrowserModule,
