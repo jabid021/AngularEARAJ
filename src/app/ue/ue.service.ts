@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import {UE} from "../model/UE";
-import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UeService {
   ues: Array<UE> = new Array<UE>();
-  constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-
+  constructor() {
+    this.ues.push(new UE(1,0,1234,15,35));
+    this.ues.push(new UE(1,0,4321,20,45));
+    this.ues.push(new UE(1,0,4444,25,54));
   }
 
   findAll(): Array<UE> {
