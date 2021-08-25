@@ -24,6 +24,7 @@ export class FormateurComponent implements OnInit {
 
   add() {
     this.formateurForm = new Formateur();
+    this.formateurForm.adr=new Adresse();
   }
 
   edit(id: number) {
@@ -32,6 +33,10 @@ export class FormateurComponent implements OnInit {
     this.formateurForm = new Formateur(formateur.id, formateur.version, formateur.civilite, formateur.nom, formateur.prenom,formateur.email,formateur.telephone,formateur.experience,formateur.adr);
   }
 
+  delete(id:number)
+  {
+    this.formateurService.deleteById(id);
+  }
   save() {
     if (this.formateurForm.id) {
       this.formateurService.modify(this.formateurForm);
