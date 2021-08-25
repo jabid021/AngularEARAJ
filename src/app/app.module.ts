@@ -14,6 +14,7 @@ import { SalleComponent } from './salle/salle.component';
 import {SalleService} from "./salle/salle-service.service";
 import { FormateurComponent } from './formateur/formateur.component';
 import { CheckedPipe } from './checked.pipe';
+import { UEComponent } from './ue/ue.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import { CheckedPipe } from './checked.pipe';
     StagiaireComponent,
     SalleComponent,
     MatiereComponent,
-    FormateurComponent,
     CheckedPipe
+    FormateurComponent,
+    UEComponent
   ],
   imports: [
     BrowserModule,

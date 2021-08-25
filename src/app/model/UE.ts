@@ -5,7 +5,20 @@ import {Salle} from "./Salle";
 
 export class UE
 {
-  constructor(id?:number,version?:number,code?:number,duree?:number,ordre?:number,matiere?:Matiere,formateur? : Formateur,filiere?:Filiere,salle?:Salle) {
-  }
+  id:number;
+  version:number;
+  code:number;
+  duree:number;
+  ordre:number;
+  filiere:Filiere;
+  formateur:Formateur;
+  matiere:Matiere;
 
+  constructor(id?: number, version?: number, code?: number, duree?: number, ordre?: number) {
+    this.id = id;
+    this.version = version;
+    this.code = code;
+    this.duree = duree;
+    this.ordre = ordre;
+  }
 }

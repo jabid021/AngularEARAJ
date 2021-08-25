@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Filiere} from "../model/Filiere";
 import {FiliereService} from "./filiere.service";
 import {Evaluation} from "../model/evaluation";
+import {FormateurService} from "../formateur/formateur.service";
+import {Formateur} from "../model/formateur";
+import {Adresse} from "../model/adresse";
 
 @Component({
   selector: 'filiere',
@@ -10,7 +13,7 @@ import {Evaluation} from "../model/evaluation";
 })
 export class FiliereComponent implements OnInit {
   filiereForm : Filiere =null;
-  constructor(private filiereService: FiliereService) {
+  constructor(private filiereService: FiliereService,private formateurService:FormateurService) {
 
   }
 
@@ -18,20 +21,31 @@ export class FiliereComponent implements OnInit {
   }
 
 
-  list(): any {
+  list(): Array<Filiere> {
     return this.filiereService.findAll();
+  }
+
+
+  listFormateur():Array<Formateur>{
+    return this.formateurService.findAll()
   }
 
   add() {
     this.filiereForm = new Filiere();
+    this.filiereForm.formateur=new Formateur();
   }
 
   edit(id: number) {
-    let filiere : Filiere = this.filiereService.findById(id);
-    this.filiereForm = new Filiere(filiere.id,filiere.version,filiere.promotion,filiere.promotion,filiere.dtDebut,filiere.duree,filiere.dispositif);
+
+    this.filiereForm = this.filiereService.findById(id);
+    if (!this.filiereForm.formateur) {
+      this.filiereForm.formateur= new Formateur();
+    }
+
   }
 
   save() {
+    console.log(this.filiereForm);
     if (this.filiereForm.id) {
       this.filiereService.modify(this.filiereForm);
     } else {
