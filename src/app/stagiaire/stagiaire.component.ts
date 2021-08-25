@@ -34,7 +34,7 @@ export class StagiaireComponent implements OnInit {
 
   add() {
     this.stagiaireForm = new Stagiaire();
-    this.stagiaireForm.adr = new Adresse();
+    this.stagiaireForm.adresse = new Adresse();
     this.stagiaireForm.evaluation = new Evaluation();
     this.stagiaireForm.filiere=new Filiere();
   }
@@ -42,8 +42,8 @@ export class StagiaireComponent implements OnInit {
   edit(id: number) {
     this.stagiaireForm = this.stagService.findById(id);
      //= new Stagiaire(stagiare.id,stagiare.version,stagiare.civilite,stagiare.nom,stagiare.prenom,stagiare.email,stagiare.telephone,stagiare.niveauEtude, stagiare.dtNaissance,stagiare.adr);
-    if (!this.stagiaireForm.adr) {
-      this.stagiaireForm.adr = new Adresse();
+    if (!this.stagiaireForm.adresse) {
+      this.stagiaireForm.adresse = new Adresse();
     }
     if (!this.stagiaireForm.evaluation) {
       this.stagiaireForm.evaluation = new Evaluation();
