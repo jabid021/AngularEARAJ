@@ -9,6 +9,7 @@ import {MatiereServiceHTTP} from "../matiere/matiere-http.service";
 import {FormateurServiceHTTP} from "../formateur/formateur-http.service";
 import {FiliereHttpService} from "../filiere/filiere-http.service";
 import {Salle} from "../model/salle";
+import {SallehttpService} from "../salle/sallehttp.service";
 
 @Component({
   selector: 'ue',
@@ -17,7 +18,7 @@ import {Salle} from "../model/salle";
 })
 export class UEComponent implements OnInit {
   ueForm : UE=null;
-  constructor(private formateurService: FormateurServiceHTTP,private matiereService: MatiereServiceHTTP,private salleService: SalleService,private ueService: UeHttpService, private filiereService: FiliereHttpService) {
+  constructor(private formateurService: FormateurServiceHTTP,private matiereService: MatiereServiceHTTP,private salleService: SallehttpService,private ueService: UeHttpService, private filiereService: FiliereHttpService) {
   }
 
 
@@ -54,23 +55,24 @@ export class UEComponent implements OnInit {
   edit(id: number) {
     this.ueService.findById(id).subscribe(resp => {
       this.ueForm = resp;
+      if(!this.ueForm.filiere)
+      {
+        this.ueForm.filiere=new Filiere();
+      }
+      if(!this.ueForm.formateur)
+      {
+        this.ueForm.formateur=new Formateur();
+      }
+      if(!this.ueForm.matiere)
+      {
+        this.ueForm.matiere=new Matiere();
+      }
+      if(!this.ueForm.salle)
+      {
+        this.ueForm.salle=new Salle();
+      }
     });
-    if(!this.ueForm.filiere)
-    {
-      this.ueForm.filiere=new Filiere();
-    }
-    if(!this.ueForm.formateur)
-    {
-      this.ueForm.formateur=new Formateur();
-    }
-    if(!this.ueForm.matiere)
-    {
-      this.ueForm.matiere=new Matiere();
-    }
-    if(!this.ueForm.salle)
-    {
-      this.ueForm.salle=new Salle();
-    }
+
   }
 
   save() {
