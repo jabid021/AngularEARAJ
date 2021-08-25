@@ -13,7 +13,9 @@ import { MatiereComponent } from './matiere/matiere.component';
 import { SalleComponent } from './salle/salle.component';
 import {SalleService} from "./salle/salle-service.service";
 import { FormateurComponent } from './formateur/formateur.component';
+import { CheckedPipe } from './checked.pipe';
 import { UEComponent } from './ue/ue.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { UEComponent } from './ue/ue.component';
     StagiaireComponent,
     SalleComponent,
     MatiereComponent,
+    CheckedPipe,
     FormateurComponent,
-    UEComponent
+    UEComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [EvaluationService, SalleService],
   bootstrap: [AppComponent]

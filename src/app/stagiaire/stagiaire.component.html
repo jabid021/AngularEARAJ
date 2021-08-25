@@ -34,10 +34,10 @@
         <td>{{stagiaire.prenom}}</td>
         <td>{{stagiaire.email}}</td>
         <td>{{stagiaire.telephone}}</td>
-        <td>{{stagiaire.adr.rue}}</td>
-        <td>{{stagiaire.adr.complement}}</td>
-        <td>{{stagiaire.adr.codePostal}}</td>
-        <td>{{stagiaire.adr.ville}}</td>
+        <td>{{stagiaire.adresse.rue}}</td>
+        <td>{{stagiaire.adresse.complement}}</td>
+        <td>{{stagiaire.adresse.codePostal}}</td>
+        <td>{{stagiaire.adresse.ville}}</td>
         <td>{{stagiaire.dtNaissance |date}}</td>
         <td>{{stagiaire.niveauEtude}}</td>
         <td>{{stagiaire.evaluation?.id}} - {{stagiaire.evaluation?.commentaires}}</td>
@@ -107,20 +107,20 @@
 
       <div class="form-group">
         <label for="rue">Rue :</label>
-        <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaireForm.adr.rue">
+        <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaireForm.adresse.rue">
       </div>
 
       <div class="form-group">
         <label for="complement">Complement :</label>
-        <input type="text" class="form-control" id="complement" [(ngModel)]="stagiaireForm.adr.complement">
+        <input type="text" class="form-control" id="complement" [(ngModel)]="stagiaireForm.adresse.complement">
       </div>
       <div class="form-group">
         <label for="cp">Code Postal :</label>
-        <input type="text" class="form-control" id="cp" [(ngModel)]="stagiaireForm.adr.codePostal">
+        <input type="text" class="form-control" id="cp" [(ngModel)]="stagiaireForm.adresse.codePostal">
       </div>
       <div class="form-group">
         <label for="ville">Ville :</label>
-        <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaireForm.adr.ville">
+        <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaireForm.adresse.ville">
       </div>
 
       <div class="form-group">

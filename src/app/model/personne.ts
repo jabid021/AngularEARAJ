@@ -8,7 +8,7 @@ export class Personne{
   prenom:string;
   email:string;
   telephone:string;
-  adr : Adresse;
+  adresse : Adresse;
 
   constructor(id?:number,version?:number,civilite?:string,nom?:string,prenom?:string,email?:string,telephone?:string,adr?:Adresse) {
     this.id=id;
@@ -18,6 +18,6 @@ export class Personne{
     this.civilite=civilite;
     this.email=email;
     this.telephone=telephone;
-    this.adr=adr;
+    this.adresse=adr;
   }
 }
