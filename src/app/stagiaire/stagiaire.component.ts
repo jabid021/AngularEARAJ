@@ -42,4 +42,8 @@ export class StagiaireComponent implements OnInit {
     this.stagiaireForm = null;
   }
 
+  delete(id:number)
+  {
+    this.stagService.deleteById(id);
+  }
 }
