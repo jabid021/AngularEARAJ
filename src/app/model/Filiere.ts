@@ -1,3 +1,5 @@
+import {Formateur} from "./formateur";
+
 export class Filiere {
   id: number;
   version: number;
@@ -6,6 +8,7 @@ export class Filiere {
   dtDebut: Date = new Date();
   duree:number;
   dispositif:string;
+  formateur:Formateur;
 
   constructor(id?: number, version?: number, intitule?:string,promotion?:string,dtDebut?:Date,duree?:number,dispositif?:string) {
     this.id = id;

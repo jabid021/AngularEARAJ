@@ -104,6 +104,7 @@
         </select>
       </div>
 
+
       <div class="form-group">
         <label for="rue">Rue :</label>
         <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaireForm.adr.rue">
@@ -121,6 +122,7 @@
         <label for="ville">Ville :</label>
         <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaireForm.adr.ville">
       </div>
+
       <div class="form-group">
         <label for="evaluation">Evaluation:</label>
         <select class="form-control" id="evaluation" [(ngModel)]="stagiaireForm.evaluation.id">
@@ -128,13 +130,16 @@
           <option *ngFor="let eval of listEvaluation()" [value]="eval.id">{{eval.id}} - {{eval.commentaires}}</option>
         </select>
       </div>
+
+
       <div class="form-group">
-        <label for="evaluation">Filiere:</label>
+        <label for="filiere">Filiere:</label>
         <select class="form-control" id="filiere" [(ngModel)]="stagiaireForm.filiere.id">
-          <option value="">Choisir une filiere</option>
-          <option *ngFor="let filiere of listFiliere()" [value]="filiere.id">{{filiere.id}} - {{filiere.intitule}}</option>
+          <option value="">Choisir une Filiere</option>
+          <option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>
         </select>
       </div>
+
     </div>
 
 
