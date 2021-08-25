@@ -7,6 +7,8 @@ import {EvaluationService} from "../evaluation/evaluation.service";
 import {Filiere} from "../model/filiere";
 import {FiliereService} from "../filiere/filiere.service";
 import {StagiaireHttpService} from "./stagiaire-http.service";
+import {FiliereHttpService} from "../filiere/filiere-http.service";
+import {EvaluationHttpService} from "../evaluation/evaluation-http.service";
 
 @Component({
   selector: 'app-stagiaire',
@@ -16,7 +18,7 @@ import {StagiaireHttpService} from "./stagiaire-http.service";
 export class StagiaireComponent implements OnInit {
   stagiaireForm:Stagiaire=null;
 
-  constructor(private stagService:StagiaireHttpService,private filiereService:FiliereService, private  evaluationService:EvaluationService) { }
+  constructor(private stagService:StagiaireHttpService,private filiereService:FiliereHttpService, private  evaluationService:EvaluationHttpService) { }
 
   ngOnInit(): void {
   }
