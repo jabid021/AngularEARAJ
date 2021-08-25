@@ -19,6 +19,8 @@
         <th>Code postal</th>
         <th>Date naissance</th>
         <th>Niveau Etude</th>
+        <th>Evaluation</th>
+        <th>Filiere</th>
 
         <th></th>
       </tr>
@@ -38,6 +40,8 @@
         <td>{{stagiaire.adr.ville}}</td>
         <td>{{stagiaire.dtNaissance |date}}</td>
         <td>{{stagiaire.niveauEtude}}</td>
+        <td>{{stagiaire.evaluation?.id}}, {{stagiaire.evaluation?.commentaires}}</td>
+        <td>{{stagiaire.filiere?.id}}, {{stagiaire.filiere?.intitule}}</td>
         <td>
           <div class="btn-group btn-group-sm">
             <a class="btn btn-primary" (click)="edit(stagiaire.id)"><i class="fa fa-edit"></i></a>
@@ -100,6 +104,7 @@
         </select>
       </div>
 
+
       <div class="form-group">
         <label for="rue">Rue :</label>
         <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaireForm.adr.rue">
@@ -117,6 +122,24 @@
         <label for="ville">Ville :</label>
         <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaireForm.adr.ville">
       </div>
+
+      <div class="form-group">
+        <label for="evaluation">Evaluation:</label>
+        <select class="form-control" id="evaluation" [(ngModel)]="stagiaireForm.evaluation.id">
+          <option value="">Choisir une évaluation</option>
+          <option *ngFor="let eval of listEvaluation()" [value]="eval.id">{{eval.id}} - {{eval.commentaires}}</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="filiere">Filiere:</label>
+        <select class="form-control" id="filiere" [(ngModel)]="stagiaireForm.filiere.id">
+          <option value="">Choisir une Filiere</option>
+          <option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>
+        </select>
+      </div>
+
     </div>
 
 
