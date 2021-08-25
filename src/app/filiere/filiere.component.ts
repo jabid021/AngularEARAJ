@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Filiere} from "../model/Filiere";
+import {Filiere} from "../model/filiere";
 import {FiliereService} from "./filiere.service";
 import {Evaluation} from "../model/evaluation";
 import {FormateurService} from "../formateur/formateur.service";
 import {Formateur} from "../model/formateur";
 import {Adresse} from "../model/adresse";
 import {FiliereHttpService} from "./filiere-http.service";
+import {FormateurServiceHTTP} from "../formateur/formateur-http.service";
 
 @Component({
   selector: 'filiere',
@@ -15,7 +16,7 @@ import {FiliereHttpService} from "./filiere-http.service";
 export class FiliereComponent implements OnInit {
   filiereForm : Filiere =null;
 
-  constructor(private filiereService: FiliereHttpService,private formateurService:FormateurHttpService) {
+  constructor(private filiereService: FiliereHttpService,private formateurService:FormateurServiceHTTP) {
 
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Filiere} from "../model/Filiere";
+import {Filiere} from "../model/filiere";
 import {UE} from "../model/UE";
 import {UeService} from "./ue.service";
 import {FiliereService} from "../filiere/filiere.service";
@@ -10,6 +10,9 @@ import {Matiere} from "../model/matiere";
 import {Salle} from "../model/Salle";
 import {Formateur} from "../model/formateur";
 import {UeHttpService} from "./ue-http.service";
+import {MatiereServiceHTTP} from "../matiere/matiere-http.service";
+import {FormateurServiceHTTP} from "../formateur/formateur-http.service";
+import {FiliereHttpService} from "../filiere/filiere-http.service";
 
 @Component({
   selector: 'ue',
@@ -18,7 +21,7 @@ import {UeHttpService} from "./ue-http.service";
 })
 export class UEComponent implements OnInit {
   ueForm : UE=null;
-  constructor(private formateurService: FormateurService,private matiereService: MatiereService,private salleService: SalleService,private ueService: UeHttpService, private filiereService: FiliereService) {
+  constructor(private formateurService: FormateurServiceHTTP,private matiereService: MatiereServiceHTTP,private salleService: SalleService,private ueService: UeHttpService, private filiereService: FiliereHttpService) {
   }
 
 
