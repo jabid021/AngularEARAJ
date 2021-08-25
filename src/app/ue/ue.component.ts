@@ -9,6 +9,7 @@ import {SalleService} from "../salle/salle-service.service";
 import {Matiere} from "../model/matiere";
 import {Salle} from "../model/salle";
 import {Formateur} from "../model/formateur";
+import {UeHttpService} from "./ue-http.service";
 
 @Component({
   selector: 'ue',
@@ -17,7 +18,7 @@ import {Formateur} from "../model/formateur";
 })
 export class UEComponent implements OnInit {
   ueForm : UE=null;
-  constructor(private formateurService: FormateurService,private matiereService: MatiereService,private salleService: SalleService,private ueService: UeService, private filiereService: FiliereService) {
+  constructor(private formateurService: FormateurService,private matiereService: MatiereService,private salleService: SalleService,private ueService: UeHttpService, private filiereService: FiliereService) {
   }
 
 
@@ -52,8 +53,9 @@ export class UEComponent implements OnInit {
   }
 
   edit(id: number) {
-    let ue : UE = this.ueService.findById(id);
-    this.ueForm = new UE(ue.id,ue.version,ue.code,ue.duree,ue.ordre);
+    this.ueService.findById(id).subscribe(resp => {
+      this.ueForm = resp;
+    });
     if(!this.ueForm.filiere)
     {
       this.ueForm.filiere=new Filiere();
@@ -84,7 +86,9 @@ export class UEComponent implements OnInit {
 
   delete(id:number)
   {
-    this.ueService.deleteById(id);
+    this.ueService.deleteById(id).subscribe(resp => {
+      this.ueService.load();
+    }, error => console.log(error));
   }
 
   cancel() {
