@@ -7,9 +7,9 @@ import {Filiere} from "../model/Filiere";
 export class FiliereService implements OnInit {
   filieres: Array<Filiere> = new Array<Filiere>();
   constructor() {
-    this.filieres.push(new Filiere(1,0,"Dream Team 2019","TPT1",new Date(2019,1,2, 12,34,56),15,"dispositif1"));
-    this.filieres.push(new Filiere(2,0,"Dream Team 2020","TPT2",new Date(2020,1,2, 12,34,56),15,"dispositif1"));
-    this.filieres.push(new Filiere(3,0,"Dream Team 2021","TPT3",new Date(2021,1,2, 12,34,56),15,"dispositif1"));
+    this.filieres.push(new Filiere(1,0,"Dream Team 2019","TPT1",new Date(2019,1,2, 12,34,56),15,"POEI"));
+    this.filieres.push(new Filiere(2,0,"Dream Team 2020","TPT2",new Date(2020,1,2, 12,34,56),15,"POEC"));
+    this.filieres.push(new Filiere(3,0,"Dream Team 2021","TPT3",new Date(2021,1,2, 12,34,56),15,"PROA"));
 
   }
   findAll(): Array<Filiere> {
