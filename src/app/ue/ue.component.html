@@ -1,0 +1,72 @@
+<p>ue works!</p>
+<div class="card mt-3">
+  <div class="card-header bg-info text-white">
+    <h2>Liste des UE</h2>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Identifiant</th>
+        <th>Version</th>
+        <th>Code</th>
+        <th>Durée</th>
+        <th>Ordre</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ue of list()">
+        <td>{{ue.id}}</td>
+        <td>{{ue.version}}</td>
+        <td>{{ue.code}}</td>
+        <td>{{ue.duree}}</td>
+        <td>{{ue.ordre}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-primary" (click)="edit(ue.id)"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-danger" (click)="delete(ue.id)" ><i class="fa fa-trash"></i></a>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+    <a class="btn btn-success btn-lg" (click)="add()">
+      <i class="fa fa-plus"></i>
+    </a>
+  </div>
+
+  <div class="card mt-3" *ngIf="ueForm">
+    <div class="card-header bg-info text-white">
+      <h3>Edition d'une UE</h3>
+    </div>
+
+    <div class="card-body">
+      <div class="form-group">
+        <label for="code">Code :</label>
+        <input type="text" class="form-control" id="code" [(ngModel)]="ueForm.code">
+      </div>
+      <div class="form-group">
+        <label for="duree">Durée :</label>
+        <input type="text" class="form-control" id="duree" [(ngModel)]="ueForm.duree">
+      </div>
+      <div class="form-group">
+        <label for="ordre">Ordre :</label>
+        <input type="text" class="form-control" id="ordre" [(ngModel)]="ueForm.ordre" >
+      </div>
+
+      <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+          <a class="btn btn-success" (click)="save()">
+            <i class="fa fa-check"></i>
+          </a>
+          <a class="btn btn-warning" (click)="cancel()">
+            <i class="fa fa-sync"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
