@@ -32,8 +32,8 @@ export class FormateurComponent implements OnInit {
 
   add() {
     this.formateurForm = new Formateur();
-    this.formateurForm.adr=new Adresse();
-    this.formateurForm.matieres=new Array<Matiere>();
+    this.formateurForm.adresse=new Adresse();
+    this.formateurForm.competences=new Array<Matiere>();
   }
 
   edit(id: number) {
@@ -67,7 +67,7 @@ export class FormateurComponent implements OnInit {
   checkMatiere(id:number,event:any)
   {
     if(event.checked) {
-      this.formateurForm.matieres.push(this.matiereService.findById(id));
+      this.formateurForm.competences.push(this.matiereService.findById(id));
     }
     else
     {
@@ -78,14 +78,14 @@ export class FormateurComponent implements OnInit {
     removeMatiere(id:number)
     {
       let find: boolean = false;
-      for (var indice = 0; indice < this.formateurForm.matieres.length; indice++) {
-        if (this.formateurForm.matieres[indice].id == id) {
+      for (var indice = 0; indice < this.formateurForm.competences.length; indice++) {
+        if (this.formateurForm.competences[indice].id == id) {
           find = true;
           break;
         }
       }
       if (find) {
-        this.formateurForm.matieres.splice(indice, 1);
+        this.formateurForm.competences.splice(indice, 1);
       }
     }
 

@@ -13,15 +13,16 @@ import {AppConfigService} from "../app-config.service";
 export class MatiereServiceHTTP {
 
   matieres: Array<Matiere> = new Array<Matiere>();
-  chemin:string;
-  constructor(private matiereService:MatiereService,private http : HttpClient,private appconfig:AppConfigService) {
-    this.load();
-    this.chemin=this.appconfig.backEndUrl+"matiere/";
+  chemin: string;
 
+  constructor(private http: HttpClient, private appconfig: AppConfigService) {
+
+    this.chemin = this.appconfig.backEndUrl + "matiere/";
+    this.load();
   }
 
   findAll(): Array<Matiere> {
-    return this. matieres;
+    return this.matieres;
   }
 
   findById(id: number): Observable<Matiere> {
@@ -29,35 +30,31 @@ export class MatiereServiceHTTP {
   }
 
   create(matiere: Matiere) {
-    this.http.post<Array<Matiere>>(this.chemin,matiere).subscribe(response=>
-      {
+    this.http.post<Array<Matiere>>(this.chemin, matiere).subscribe(response => {
         this.load();
         console.log(response);
       },
-      error=>console.log(error));
+      error => console.log(error));
   }
 
   modify(matiere: Matiere) {
-    this.http.put<Array<Matiere>>(this.chemin+matiere.id,matiere).subscribe(response=>
-      {
+    this.http.put<Array<Matiere>>(this.chemin + matiere.id, matiere).subscribe(response => {
         this.load();
         console.log(response);
       },
-      error=>console.log(error));
+      error => console.log(error));
   }
 
-  deleteById(id: number) : Observable<void> {
-   return  this.http.delete<void>(this.chemin+id);
+  deleteById(id: number): Observable<void> {
+    return this.http.delete<void>(this.chemin + id);
   }
 
 
-  load()
-  {
-    this.http.get<Array<Matiere>>(this.chemin).subscribe(response=>
-      {
-        this.matieres=response;
+  load() {
+    this.http.get<Array<Matiere>>(this.chemin).subscribe(response => {
+        this.matieres = response;
         console.log(response);
       },
-      error=>console.log(error));
+      error => console.log(error));
   }
 }

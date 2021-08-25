@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Matiere} from "../model/matiere";
-import {Formateur} from "../model/formateur";
-import {Adresse} from "../model/adresse";
 import {MatiereServiceHTTP} from "./matiere-http.service";
 
 
