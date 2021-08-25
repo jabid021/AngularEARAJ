@@ -108,7 +108,7 @@
         <div class="form-group">
           <span *ngFor="let m of listMatieres()">
              <label for="matiere-{{m.id}}">{{m.nom}} :</label>
-              <input [checked]="m.id|checked : formateurForm.competences"  (change)="checkMatiere(m.id,$event.target)" type="checkbox" class="form-control" id="matiere-{{m.id}}">
+              <input [checked]="m.id|checked : formateurForm.competences"  (change)="checkMatiere(m,$event.target)" type="checkbox" class="form-control" id="matiere-{{m.id}}">
           </span>
 
         </div>

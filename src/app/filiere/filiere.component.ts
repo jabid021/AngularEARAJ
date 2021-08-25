@@ -4,7 +4,6 @@ import {FiliereService} from "./filiere.service";
 import {Evaluation} from "../model/evaluation";
 import {FormateurService} from "../formateur/formateur.service";
 import {Formateur} from "../model/formateur";
-import {Adresse} from "../model/adresse";
 import {FiliereHttpService} from "./filiere-http.service";
 import {FormateurServiceHTTP} from "../formateur/formateur-http.service";
 

@@ -7,7 +7,7 @@ import {FormateurService} from "../formateur/formateur.service";
 import {MatiereService} from "../matiere/matiere.service";
 import {SalleService} from "../salle/salle-service.service";
 import {Matiere} from "../model/matiere";
-import {Salle} from "../model/Salle";
+import {Salle} from "../model/salle";
 import {Formateur} from "../model/formateur";
 import {UeHttpService} from "./ue-http.service";
 import {MatiereServiceHTTP} from "../matiere/matiere-http.service";
