@@ -20,33 +20,33 @@ export class StagiaireService {
   }
 
   findById(id: number): Stagiaire {
-    return this.stagiaires.find(stagiare => stagiare.id == id);
+    return this.stagiaires.find(stagiaire => stagiaire.id == id);
   }
 
-  create(stagiare: Stagiaire) {
+  create(stagiaire: Stagiaire) {
     let max = 0;
     for (let current of this.stagiaires) {
       if (max < current.id) {
         max = current.id;
       }
     }
-    stagiare.id = ++max;
-    stagiare.version = 0;
+    stagiaire.id = ++max;
+    stagiaire.version = 0;
 
-    this.stagiaires.push(stagiare);
+    this.stagiaires.push(stagiaire);
   }
 
-  modify(stagiare: Stagiaire) {
+  modify(stagiaire: Stagiaire) {
     let find: boolean = false;
     for (var indice = 0; indice < this.stagiaires.length; indice++) {
-      if (this.stagiaires[indice].id == stagiare.id) {
+      if (this.stagiaires[indice].id == stagiaire.id) {
         find = true;
         break;
       }
     }
     if (find) {
-      stagiare.version++;
-      this.stagiaires[indice] = stagiare;
+      stagiaire.version++;
+      this.stagiaires[indice] = stagiaire;
     }
   }
 
