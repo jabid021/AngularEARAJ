@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {EvaluationService} from "./evaluation.service";
 import {Evaluation} from "../model/evaluation";
+import {EvaluationHttpService} from "./evaluation-http.service";
 
 @Component({
   selector: 'evaluation',
@@ -11,7 +12,7 @@ export class EvaluationComponent implements OnInit {
 
   evaluationForm: Evaluation = null;
 
-  constructor(private evaluationService: EvaluationService) {
+  constructor(private evaluationService: EvaluationHttpService) {
   }
 
   ngOnInit(): void {
@@ -26,15 +27,10 @@ export class EvaluationComponent implements OnInit {
   }
 
   edit(id: number) {
-    let evaluation: Evaluation = this.evaluationService.findById(id);
-    this.evaluationForm = new Evaluation(evaluation.id, evaluation.version, evaluation.comportemental, evaluation.technique, evaluation.commentaires);
+    this.evaluationService.findById(id).subscribe(resp => {
+      this.evaluationForm = resp;
+    })
   }
-
-  delete(id:number)
-  {
-    this.evaluationService.deleteById(id);
-  }
-
 
   save() {
     if (this.evaluationForm.id) {
@@ -44,6 +40,13 @@ export class EvaluationComponent implements OnInit {
     }
 
     this.evaluationForm = null;
+  }
+
+  // pour l'exemple => mais de préférence coder le subscribe dans le service
+  delete(id: number) {
+    this.evaluationService.deleteById(id).subscribe(resp => {
+      this.evaluationService.load();
+    }, error => console.log(error));
   }
 
   cancel() {

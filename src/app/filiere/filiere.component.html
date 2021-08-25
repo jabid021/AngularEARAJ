@@ -25,7 +25,7 @@
         <td>{{filiere.dtDebut | date:'dd/MM/yyyy'}}</td>
         <td>{{filiere.duree}}</td>
         <td>{{filiere.dispositif}}</td>
-        <td>{{filiere.formateur}}</td>
+        <td>{{filiere.formateur?.id}} {{filiere.formateur?.nom}}</td>
         <td>
           <div class="btn-group btn-group-sm">
             <a class="btn btn-primary" (click)="edit(filiere.id)"><i class="fa fa-edit"></i></a>
