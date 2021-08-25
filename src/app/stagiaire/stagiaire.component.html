@@ -19,6 +19,8 @@
         <th>Code postal</th>
         <th>Date naissance</th>
         <th>Niveau Etude</th>
+        <th>Evaluation</th>
+        <th>Filiere</th>
 
         <th></th>
       </tr>
@@ -36,12 +38,14 @@
         <td>{{stagiaire.adr.complement}}</td>
         <td>{{stagiaire.adr.codePostal}}</td>
         <td>{{stagiaire.adr.ville}}</td>
-        <td>{{stagiaire.dtNaissance}}</td>
+        <td>{{stagiaire.dtNaissance |date}}</td>
         <td>{{stagiaire.niveauEtude}}</td>
+        <td>{{stagiaire.evaluation?.id}}, {{stagiaire.evaluation?.commentaires}}</td>
+        <td>{{stagiaire.filiere?.id}}, {{stagiaire.filiere?.intitule}}</td>
         <td>
           <div class="btn-group btn-group-sm">
             <a class="btn btn-primary" (click)="edit(stagiaire.id)"><i class="fa fa-edit"></i></a>
-            <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            <a class="btn btn-danger" (click)="delete(stagiaire.id)"><i class="fa fa-trash"></i></a>
           </div>
         </td>
       </tr>
@@ -61,33 +65,81 @@
 
     <div class="card-body">
       <div class="form-group">
-        <label for="comportemental">Civilite :</label>
-        <input type="text" class="form-control" id="comportemental" [(ngModel)]="stagiaireForm.civilite">
+        <select class="form-control" id="civilite" [(ngModel)]="stagiaireForm.civilite">
+          <option value="">Civilite</option>
+          <option value="M">M</option>
+          <option value="Mme">Mme</option>
+          <option value="autre">Autre</option>
+        </select>
       </div>
       <div class="form-group">
-        <label for="technique">Nom :</label>
-        <input type="text" class="form-control" id="technique" [(ngModel)]="stagiaireForm.nom">
+        <label for="nom">Nom :</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="stagiaireForm.nom">
       </div>
       <div class="form-group">
-        <label for="technique">Prenom :</label>
-        <input type="text" class="form-control" id="technique" [(ngModel)]="stagiaireForm.prenom">
+        <label for="prenom">Prenom :</label>
+        <input type="text" class="form-control" id="prenom" [(ngModel)]="stagiaireForm.prenom">
       </div>
       <div class="form-group">
-        <label for="technique">Email :</label>
-        <input type="text" class="form-control" id="technique" [(ngModel)]="stagiaireForm.email">
+        <label for="email">Email :</label>
+        <input type="text" class="form-control" id="email" [(ngModel)]="stagiaireForm.email">
       </div>
       <div class="form-group">
-        <label for="technique">Telephone :</label>
-        <input type="text" class="form-control" id="technique" [(ngModel)]="stagiaireForm.telephone">
+        <label for="telephone">Telephone :</label>
+        <input type="text" class="form-control" id="telephone" [(ngModel)]="stagiaireForm.telephone">
       </div>
       <div class="form-group">
-        <label for="technique">Date naissance :</label>
-        <input type="date" class="form-control" id="technique" [(ngModel)]="stagiaireForm.dtNaissance">
+        <label for="dtNaissance">Date naissance :</label>
+        <input type="date" class="form-control" id="dtNaissance" [ngModel]="stagiaireForm.dtNaissance | date:'yyyy-MM-dd'" (ngModelChange)="stagiaireForm.dtNaissance = $event">
+      </div>
+
+      <div class="form-group">
+        <select class="form-control" id="niveauEtude" [(ngModel)]="stagiaireForm.niveauEtude">
+          <option value="">Choisir un niveau d'étude</option>
+          <option value="BAC">Bac</option>
+          <option value="BAC_2">Bac + 2</option>
+          <option value="BAC_3">Bac + 3</option>
+          <option value="BAC_5">Bac + 5</option>
+          <option value="BAC_8">Bac + 8</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="rue">Rue :</label>
+        <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaireForm.adr.rue">
+      </div>
+
+      <div class="form-group">
+        <label for="complement">Complement :</label>
+        <input type="text" class="form-control" id="complement" [(ngModel)]="stagiaireForm.adr.complement">
       </div>
       <div class="form-group">
-        <label for="technique">Niveau Etude :</label>
-        <input type="text" class="form-control" id="technique" [(ngModel)]="stagiaireForm.niveauEtude">
+        <label for="cp">Code Postal :</label>
+        <input type="text" class="form-control" id="cp" [(ngModel)]="stagiaireForm.adr.codePostal">
       </div>
+      <div class="form-group">
+        <label for="ville">Ville :</label>
+        <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaireForm.adr.ville">
+      </div>
+
+      <div class="form-group">
+        <label for="evaluation">Evaluation:</label>
+        <select class="form-control" id="evaluation" [(ngModel)]="stagiaireForm.evaluation.id">
+          <option value="">Choisir une évaluation</option>
+          <option *ngFor="let eval of listEvaluation()" [value]="eval.id">{{eval.id}} - {{eval.commentaires}}</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="filiere">Filiere:</label>
+        <select class="form-control" id="filiere" [(ngModel)]="stagiaireForm.filiere.id">
+          <option value="">Choisir une Filiere</option>
+          <option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>
+        </select>
+      </div>
+
     </div>
 
 
