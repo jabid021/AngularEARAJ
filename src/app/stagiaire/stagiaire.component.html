@@ -88,6 +88,7 @@
         <label for="dtNaissance">Date naissance :</label>
         <input type="date" class="form-control" id="dtNaissance" [ngModel]="stagiaireForm.dtNaissance | date:'yyyy-MM-dd'" (ngModelChange)="stagiaireForm.dtNaissance = $event">
       </div>
+
       <div class="form-group">
         <select class="form-control" id="niveauEtude" [(ngModel)]="stagiaireForm.niveauEtude">
           <option value="">Choisir un niveau d'étude</option>
@@ -97,6 +98,24 @@
           <option value="BAC_5">Bac + 5</option>
           <option value="BAC_8">Bac + 8</option>
         </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rue">Rue :</label>
+        <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaireForm.adr.rue">
+      </div>
+
+      <div class="form-group">
+        <label for="complement">Complement :</label>
+        <input type="text" class="form-control" id="complement" [(ngModel)]="stagiaireForm.adr.complement">
+      </div>
+      <div class="form-group">
+        <label for="cp">Code Postal :</label>
+        <input type="text" class="form-control" id="cp" [(ngModel)]="stagiaireForm.adr.codePostal">
+      </div>
+      <div class="form-group">
+        <label for="ville">Ville :</label>
+        <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaireForm.adr.ville">
       </div>
     </div>
 
