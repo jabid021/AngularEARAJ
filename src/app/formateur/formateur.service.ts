@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Formateur} from "../model/formateur";
 import {Adresse} from "../model/adresse";
+import {MatiereService} from "../matiere/matiere.service";
+import {Matiere} from "../model/matiere";
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +11,19 @@ export class FormateurService {
 
   formateurs: Array<Formateur> = new Array<Formateur>();
 
-  constructor() {
+  constructor(private matiereService:MatiereService) {
     let adresse : Adresse = new Adresse("6 rue rougemont","","75009","Paris");
     let adresse2 : Adresse = new Adresse("6 rue rougemont","","75009","Paris");
     let adresse3 : Adresse = new Adresse("6 rue rougemont","","75009","Paris");
-    this.formateurs.push(new Formateur(1, 0, "M", "Doe", "John","john@gmail.com","0104217",2,adresse));
-    this.formateurs.push(new Formateur(2, 0, "MME", "Doe", "Jane","john@gmail.com","0104217",2,adresse2));
-    this.formateurs.push(new Formateur(3, 0, "MLLE", "Sultan", "Erica","john@gmail.com","0104217",2,adresse3));
+
+    let matieres = [];
+    matieres.push(matiereService.findById(1));
+    matieres.push(matiereService.findById(3));
+    matieres.push(matiereService.findById(4));
+
+    this.formateurs.push(new Formateur(1, 0, "M", "Doe", "John","john@gmail.com","0104217",2,adresse,matieres));
+    this.formateurs.push(new Formateur(2, 0, "MME", "Doe", "Jane","john@gmail.com","0104217",2,adresse2,new Array()));
+    this.formateurs.push(new Formateur(3, 0, "MLLE", "Sultan", "Erica","john@gmail.com","0104217",2,adresse3,new Array()));
   }
 
   findAll(): Array<Formateur> {
