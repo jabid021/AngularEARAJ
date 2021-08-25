@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Matiere} from "../model/matiere";
+<<<<<<< Updated upstream
+import {MatiereServiceHTTP} from "./matiere-http.service";
+=======
 import {MatiereService} from "./matiere.service";
+import {MatiereHttpService} from "./matiere-http.service";
+>>>>>>> Stashed changes
 
 
 @Component({
@@ -9,13 +14,21 @@ import {MatiereService} from "./matiere.service";
   styleUrls: ['./matiere.component.scss']
 })
 export class MatiereComponent implements OnInit {
+
   matiereForm: Matiere = null;
 
-  constructor(private matiereService: MatiereService) { }
+<<<<<<< Updated upstream
+  constructor(private matiereService: MatiereServiceHTTP) {
+  }
+=======
+  constructor(private matiereService: MatiereHttpService) { }
+>>>>>>> Stashed changes
 
   ngOnInit(): void {
   }
-  list(): Array<Matiere> {
+
+
+  list(): any {
     return this.matiereService.findAll();
   }
 
@@ -24,15 +37,36 @@ export class MatiereComponent implements OnInit {
   }
 
   edit(id: number) {
-    let matiere: Matiere = this.matiereService.findById(id);
-    this.matiereForm = new Matiere(matiere.id, matiere.version, matiere.nom, matiere.duree);
+<<<<<<< Updated upstream
+    this.matiereService.findById(id).subscribe(response=>
+      {
+        this.matiereForm=response;
+        console.log(response);
+      },
+      error=>console.log(error));
   }
 
   delete(id:number)
   {
-    this.matiereService.deleteById(id);
+    this.matiereService.deleteById(id).subscribe(response=>
+      {
+        this.matiereService.load();
+        console.log(response);
+      },
+      error=>console.log(error));
+=======
+    this.matiereService.findById(id).subscribe(resp=>{
+      this.matiereForm=resp;
+    });
+
   }
 
+  delete(id: number) {
+    this.matiereService.deleteById(id).subscribe(resp => {
+      this.matiereService.load();
+    }, error => console.log(error));
+>>>>>>> Stashed changes
+  }
   save() {
     if (this.matiereForm.id) {
       this.matiereService.modify(this.matiereForm);
@@ -42,7 +76,6 @@ export class MatiereComponent implements OnInit {
 
     this.matiereForm = null;
   }
-
   cancel() {
     this.matiereForm = null;
   }

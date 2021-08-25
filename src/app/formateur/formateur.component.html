@@ -15,6 +15,7 @@
         <th>Telephone</th>
         <th>Adresse</th>
         <th>Experience</th>
+        <th>Matieres</th>
         <th></th>
       </tr>
       </thead>
@@ -27,8 +28,12 @@
         <td>{{formateur.prenom}}</td>
         <td>{{formateur.email}}</td>
         <td>{{formateur.telephone}}</td>
-        <td>{{formateur.adr?.rue}}, {{formateur.adr?.complement}}, {{formateur.adr?.codePostal}}, {{formateur.adr?.ville}}</td>
+        <td>{{formateur.adresse?.rue}}, {{formateur.adresse?.complement}}<br> {{formateur.adresse?.codePostal}}, {{formateur.adresse?.ville}}</td>
         <td>{{formateur.experience}}</td>
+        <td >
+          <span *ngFor="let m of formateur.competences">{{m.nom}}<br></span>
+          <span *ngIf="formateur.competences.length==0">Pas de matieres</span>
+        </td>
         <td>
           <div class="btn-group btn-group-sm">
             <a class="btn btn-primary" (click)="edit(formateur.id)"><i class="fa fa-edit"></i></a>
@@ -82,22 +87,32 @@
 
       <div class="form-group">
         <label for="rue">Rue :</label>
-        <input type="text" class="form-control" id="rue" [(ngModel)]="formateurForm.adr.rue">
+        <input type="text" class="form-control" id="rue" [(ngModel)]="formateurForm.adresse.rue">
       </div>
 
       <div class="form-group">
         <label for="complement">Complement :</label>
-        <input type="text" class="form-control" id="complement" [(ngModel)]="formateurForm.adr.complement">
+        <input type="text" class="form-control" id="complement" [(ngModel)]="formateurForm.adresse.complement">
       </div>
       <div class="form-group">
         <label for="cp">Code Postal :</label>
-        <input type="text" class="form-control" id="cp" [(ngModel)]="formateurForm.adr.codePostal">
+        <input type="text" class="form-control" id="cp" [(ngModel)]="formateurForm.adresse.codePostal">
       </div>
       <div class="form-group">
         <label for="ville">Ville :</label>
-        <input type="text" class="form-control" id="ville" [(ngModel)]="formateurForm.adr.ville">
+        <input type="text" class="form-control" id="ville" [(ngModel)]="formateurForm.adresse.ville">
       </div>
-      
+
+
+        <legend>Liste des matieres</legend>
+        <div class="form-group">
+          <span *ngFor="let m of listMatieres()">
+             <label for="matiere-{{m.id}}">{{m.nom}} :</label>
+              <input [checked]="m.id|checked : formateurForm.competences"  (change)="checkMatiere(m,$event.target)" type="checkbox" class="form-control" id="matiere-{{m.id}}">
+          </span>
+
+        </div>
+
 
     </div>
 

@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Filiere} from "../model/Filiere";
+import {Filiere} from "../model/filiere";
 import {FiliereService} from "./filiere.service";
-import {Evaluation} from "../model/evaluation";
-import {FormateurService} from "../formateur/formateur.service";
 import {Formateur} from "../model/formateur";
-import {Adresse} from "../model/adresse";
+<<<<<<< Updated upstream
+import {FiliereHttpService} from "./filiere-http.service";
+import {FormateurServiceHTTP} from "../formateur/formateur-http.service";
+=======
+import {FormateurService} from "../formateur/formateur.service";
+import {FiliereHttpService} from "./filiere-http.service";
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'filiere',
@@ -13,7 +17,12 @@ import {Adresse} from "../model/adresse";
 })
 export class FiliereComponent implements OnInit {
   filiereForm : Filiere =null;
-  constructor(private filiereService: FiliereService,private formateurService:FormateurService) {
+<<<<<<< Updated upstream
+
+  constructor(private filiereService: FiliereHttpService,private formateurService:FormateurServiceHTTP) {
+=======
+  constructor(private filiereService: FiliereHttpService,private formateurService:FormateurService) {
+>>>>>>> Stashed changes
 
   }
 
@@ -21,26 +30,38 @@ export class FiliereComponent implements OnInit {
   }
 
 
-  list(): any {
+  list(): Array<Filiere> {
     return this.filiereService.findAll();
   }
+
+<<<<<<< Updated upstream
 
   listFormateur():Array<Formateur>{
     return this.formateurService.findAll()
   }
 
+=======
+>>>>>>> Stashed changes
   add() {
     this.filiereForm = new Filiere();
     this.filiereForm.formateur=new Formateur();
   }
 
   edit(id: number) {
+<<<<<<< Updated upstream
 
-    this.filiereForm = this.filiereService.findById(id);
+    this.filiereService.findById(id).subscribe(resp => {
+      this.filiereForm = resp;
+    })
     if (!this.filiereForm.formateur) {
       this.filiereForm.formateur= new Formateur();
     }
 
+=======
+    this.filiereService.findById(id).subscribe(resp=>{
+      this.filiereForm=resp;
+    });
+>>>>>>> Stashed changes
   }
 
   save() {
@@ -56,7 +77,9 @@ export class FiliereComponent implements OnInit {
 
   delete(id:number)
   {
-    this.filiereService.deleteById(id);
+    this.filiereService.deleteById(id).subscribe(resp => {
+      this.filiereService.load();
+    }, error => console.log(error));
   }
 
   cancel() {

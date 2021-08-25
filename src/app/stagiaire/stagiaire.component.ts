@@ -3,9 +3,20 @@ import {Stagiaire} from "../model/stagiaire";
 import {StagiaireService} from "./stagiaire.service";
 import {Adresse} from "../model/adresse";
 import {Evaluation} from "../model/evaluation";
+<<<<<<< Updated upstream
 import {EvaluationService} from "../evaluation/evaluation.service";
+import {Filiere} from "../model/filiere";
+import {FiliereService} from "../filiere/filiere.service";
+import {StagiaireHttpService} from "./stagiaire-http.service";
+=======
 import {Filiere} from "../model/Filiere";
 import {FiliereService} from "../filiere/filiere.service";
+import {EvaluationService} from "../evaluation/evaluation.service";
+import {StagiaireHttpService} from "./stagiaire-http.service";
+import {EvaluationHttpService} from "../evaluation/evaluation-http.service";
+import {FiliereHttpService} from "../filiere/filiere-http.service";
+import {AppConfigService} from "../app-config.service";
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-stagiaire',
@@ -14,8 +25,13 @@ import {FiliereService} from "../filiere/filiere.service";
 })
 export class StagiaireComponent implements OnInit {
   stagiaireForm:Stagiaire=null;
+  civilites:Array<string>=new Array<string>();
 
-  constructor(private stagService:StagiaireService,private evaluationService:EvaluationService,private filiereService:FiliereService) { }
+<<<<<<< Updated upstream
+  constructor(private stagService:StagiaireHttpService,private filiereService:FiliereService, private  evaluationService:EvaluationService) { }
+=======
+  constructor(private stagService:StagiaireService) { }
+>>>>>>> Stashed changes
 
   ngOnInit(): void {
   }
@@ -24,34 +40,28 @@ export class StagiaireComponent implements OnInit {
     return this.stagService.findAll();
   }
 
-  listEvaluation(): Array<Evaluation> {
-    return this.evaluationService.findAll();
-  }
-
-  listFiliere():Array<Filiere>{
-    return this.filiereService.findAll();
-}
-
   add() {
     this.stagiaireForm = new Stagiaire();
-    this.stagiaireForm.adr = new Adresse();
+    this.stagiaireForm.adresse = new Adresse();
+<<<<<<< Updated upstream
     this.stagiaireForm.evaluation = new Evaluation();
     this.stagiaireForm.filiere=new Filiere();
   }
 
   edit(id: number) {
-    this.stagiaireForm = this.stagService.findById(id);
-     //= new Stagiaire(stagiare.id,stagiare.version,stagiare.civilite,stagiare.nom,stagiare.prenom,stagiare.email,stagiare.telephone,stagiare.niveauEtude, stagiare.dtNaissance,stagiare.adr);
-    if (!this.stagiaireForm.adr) {
-      this.stagiaireForm.adr = new Adresse();
-    }
-    if (!this.stagiaireForm.evaluation) {
-      this.stagiaireForm.evaluation = new Evaluation();
-    }
-    if (!this.stagiaireForm.filiere) {
-      this.stagiaireForm.filiere = new Filiere();
-    }
+    this.stagService.findById(id).subscribe(response=>
+      {
+        this.stagiaireForm=response;
+        console.log(response);
+      },
+      error=>console.log(error));
+=======
+  }
 
+  edit(id: number) {
+    let stagiare: Stagiaire = this.stagService.findById(id);
+    this.stagiaireForm = new Stagiaire(stagiare.id,stagiare.version,stagiare.civilite,stagiare.nom,stagiare.prenom,stagiare.email,stagiare.telephone,stagiare.niveauEtude, stagiare.dtNaissance,stagiare.adresse);
+>>>>>>> Stashed changes
   }
 
   save() {

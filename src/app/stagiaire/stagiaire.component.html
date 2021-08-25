@@ -13,10 +13,7 @@
         <th>Prenom</th>
         <th>Email</th>
         <th>Telephone</th>
-        <th>Rue</th>
-        <th>Complement adresse</th>
-        <th>Ville</th>
-        <th>Code postal</th>
+        <th>Adresse</th>
         <th>Date naissance</th>
         <th>Niveau Etude</th>
         <th>Evaluation</th>
@@ -34,14 +31,18 @@
         <td>{{stagiaire.prenom}}</td>
         <td>{{stagiaire.email}}</td>
         <td>{{stagiaire.telephone}}</td>
-        <td>{{stagiaire.adr.rue}}</td>
-        <td>{{stagiaire.adr.complement}}</td>
-        <td>{{stagiaire.adr.codePostal}}</td>
-        <td>{{stagiaire.adr.ville}}</td>
+<<<<<<< Updated upstream
+        <td>{{stagiaire.adresse?.rue}}</td>
+        <td>{{stagiaire.adresse?.complement}}</td>
+        <td>{{stagiaire.adresse?.codePostal}}</td>
+        <td>{{stagiaire.adresse?.ville}}</td>
+=======
+        <td>{{stagiaire.adresse?.rue}}, {{stagiaire.adresse?.complement}}, {{stagiaire.adresse?.codePostal}}, {{stagiaire.adresse?.ville}}</td>
+>>>>>>> Stashed changes
         <td>{{stagiaire.dtNaissance |date}}</td>
         <td>{{stagiaire.niveauEtude}}</td>
-        <td>{{stagiaire.evaluation?.id}}, {{stagiaire.evaluation?.commentaires}}</td>
-        <td>{{stagiaire.filiere?.id}}, {{stagiaire.filiere?.intitule}}</td>
+        <td>{{stagiaire.evaluation?.id}} - {{stagiaire.evaluation?.commentaires}}</td>
+        <td>{{stagiaire.filiere?.id}} - {{stagiaire.filiere?.intitule}}</td>
         <td>
           <div class="btn-group btn-group-sm">
             <a class="btn btn-primary" (click)="edit(stagiaire.id)"><i class="fa fa-edit"></i></a>
@@ -65,6 +66,7 @@
 
     <div class="card-body">
       <div class="form-group">
+        <label for="civilite">Civilite :</label>
         <select class="form-control" id="civilite" [(ngModel)]="stagiaireForm.civilite">
           <option value="">Civilite</option>
           <option value="M">M</option>
@@ -107,36 +109,37 @@
 
       <div class="form-group">
         <label for="rue">Rue :</label>
-        <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaireForm.adr.rue">
+        <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaireForm.adresse.rue">
       </div>
 
       <div class="form-group">
         <label for="complement">Complement :</label>
-        <input type="text" class="form-control" id="complement" [(ngModel)]="stagiaireForm.adr.complement">
+        <input type="text" class="form-control" id="complement" [(ngModel)]="stagiaireForm.adresse.complement">
       </div>
       <div class="form-group">
         <label for="cp">Code Postal :</label>
-        <input type="text" class="form-control" id="cp" [(ngModel)]="stagiaireForm.adr.codePostal">
+        <input type="text" class="form-control" id="cp" [(ngModel)]="stagiaireForm.adresse.codePostal">
       </div>
       <div class="form-group">
         <label for="ville">Ville :</label>
-        <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaireForm.adr.ville">
+        <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaireForm.adresse.ville">
       </div>
 
       <div class="form-group">
         <label for="evaluation">Evaluation:</label>
         <select class="form-control" id="evaluation" [(ngModel)]="stagiaireForm.evaluation.id">
           <option value="">Choisir une évaluation</option>
-          <option *ngFor="let eval of listEvaluation()" [value]="eval.id">{{eval.id}} - {{eval.commentaires}}</option>
+          <!--<option *ngFor="let eval of listEvaluation()" [value]="eval.id">{{eval.id}} - {{eval.commentaires}}</option>-->
         </select>
       </div>
 
 
+
       <div class="form-group">
-        <label for="filiere">Filiere:</label>
+        <label for="filiere">Evaluation:</label>
         <select class="form-control" id="filiere" [(ngModel)]="stagiaireForm.filiere.id">
-          <option value="">Choisir une Filiere</option>
-          <option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>
+          <option value="">Choisir une évaluation</option>
+          <!--<option *ngFor="let fil of listFiliere()" [value]="fil.id">{{fil.id}} - {{fil.intitule}}</option>-->
         </select>
       </div>
 

@@ -10,23 +10,25 @@
         <th>Nom</th>
         <th>Capacite</th>
         <th>Video Projecteur</th>
-        <th>Adresse</th>
+
         <th>Version</th>
         <th></th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let salle of list()">
-        <td>{{salle.id}}</td>
-        <td>{{salle.nom}}</td>
-        <td>{{salle.capacite}}</td>
-        <td>{{salle.videoProjecteur}}</td>
-        <td>{{salle.adresse?.rue}}, {{salle.adresse?.complement}}, {{salle.adresse?.codePostal}}, {{salle.adresse?.ville}}</td>
-        <td>{{salle.version}}</td>
+      <tr *ngFor="let classroom of list()">
+
+        <td>{{classroom.id}}</td>
+        <td>{{classroom.nom}}</td>
+        <td>{{classroom.capacite}}</td>
+        <td>{{classroom.videoProjecteur}}</td>
+       <!-- <td>{{salle.adr?.rue}}, {{salle.adr?.complement}}, {{salle.adr?.codePostal}}, {{salle.adr?.ville}}</td>-->
+        <td>{{classroom.version}}</td>
+
         <td>
           <div class="btn-group btn-group-sm">
-            <a class="btn btn-primary" (click)="edit(salle.id)"><i class="fa fa-edit"></i></a>
-            <a class="btn btn-danger" (click)="delete(salle.id)"><i class="fa fa-trash"></i></a>
+            <a class="btn btn-primary" (click)="edit(classroom.id)"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-danger" (click)="delete(classroom.id)"><i class="fa fa-trash"></i></a>
           </div>
         </td>
       </tr>
@@ -58,23 +60,9 @@
         <input type="boolean" class="form-control" id="videoProjecteur" [(ngModel)]="salleForm.videoProjecteur">
       </div>
 
-      <div class="form-group">
-        <label for="rue">Rue :</label>
-        <input type="text" class="form-control" id="rue" [(ngModel)]="salleForm.adresse.rue">
-      </div>
 
-      <div class="form-group">
-        <label for="complement">Complement :</label>
-        <input type="text" class="form-control" id="complement" [(ngModel)]="salleForm.adresse.complement">
-      </div>
-      <div class="form-group">
-        <label for="cp">Code Postal :</label>
-        <input type="text" class="form-control" id="cp" [(ngModel)]="salleForm.adresse.codePostal">
-      </div>
-      <div class="form-group">
-        <label for="ville">Ville :</label>
-        <input type="text" class="form-control" id="ville" [(ngModel)]="salleForm.adresse.ville">
-      </div>
+
+
     </div>
 
 

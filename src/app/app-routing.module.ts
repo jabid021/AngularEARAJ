@@ -7,6 +7,7 @@ import {MatiereComponent} from "./matiere/matiere.component";
 import {SalleComponent} from "./salle/salle.component";
 import {FormateurComponent} from "./formateur/formateur.component";
 import {StagiaireComponent} from "./stagiaire/stagiaire.component";
+import {UEComponent} from "./ue/ue.component";
 
 const routes: Routes = [
   {path: "accueil", component: AccueilComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path : "salle", component: SalleComponent},
   {path : "formateur", component: FormateurComponent},
   {path : "stagiaire", component: StagiaireComponent},
+  {path : "ue", component: UEComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 

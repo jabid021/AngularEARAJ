@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Salle} from "../model/Salle";
+<<<<<<< Updated upstream
+import {Salle} from "../model/salle";
 import {SalleService} from "./salle-service.service";
 import {Adresse} from "../model/adresse";
+import {SallehttpService} from "./sallehttp.service";
+=======
+import {Salle} from "../model/Salle";
+import {Adresse} from "../model/adresse";
+import {SalleHttpService} from "./salle-http.service";
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'salle',
@@ -12,27 +19,41 @@ export class SalleComponent implements OnInit {
 
   salleForm: Salle = null;
 
-  constructor(private salleService: SalleService) { }
+<<<<<<< Updated upstream
+  constructor(private salleService: SallehttpService) { }
+=======
+  constructor(private salleService: SalleHttpService) { }
+>>>>>>> Stashed changes
 
   ngOnInit(): void {
   }
 
-  list(): any {
+  list(): Array<Salle> {
     return this.salleService.findAll();
   }
 
   add() {
     this.salleForm = new Salle();
-    this.salleForm.adresse=new Adresse();
+    this.salleForm.adr=new Adresse();
   }
 
   edit(id: number) {
-    let salle: Salle = this.salleService.findById(id);
-    this.salleForm = new Salle(salle.id, salle.nom, salle.capacite, salle.videoProjecteur, salle.adresse, salle.version);
+<<<<<<< Updated upstream
+    this.salleService.findById(id).subscribe(resp => {
+      this.salleForm=resp;
+    })
+=======
+    this.salleService.findById(id).subscribe(resp=>{
+      this.salleForm=resp;
+    });
+
+>>>>>>> Stashed changes
   }
 
   delete(id:number){
-    this.salleService.deleteById(id);
+    this.salleService.deleteById(id).subscribe(resp =>{
+      this.salleService.load();
+    }, error => console.log(error));
   }
 
   save() {

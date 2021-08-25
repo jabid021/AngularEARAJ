@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {FormateurService} from "./formateur.service";
 import {Formateur} from "../model/formateur";
 import {Adresse} from "../model/adresse";
+import {MatiereService} from "../matiere/matiere.service";
+import {Matiere} from "../model/matiere";
+import {FormateurServiceHTTP} from "./formateur-http.service";
+import {MatiereServiceHTTP} from "../matiere/matiere-http.service";
 
 @Component({
   selector: 'formateur',
@@ -12,10 +16,15 @@ export class FormateurComponent implements OnInit {
 
   formateurForm: Formateur = null;
 
-  constructor(private formateurService: FormateurService) {
+  constructor(private formateurService: FormateurServiceHTTP,private matiereService:MatiereServiceHTTP) {
   }
 
   ngOnInit(): void {
+  }
+
+  listMatieres():Array<Matiere>
+  {
+    return this.matiereService.findAll();
   }
 
   list(): any {
@@ -24,18 +33,40 @@ export class FormateurComponent implements OnInit {
 
   add() {
     this.formateurForm = new Formateur();
-    this.formateurForm.adr=new Adresse();
+    this.formateurForm.adresse=new Adresse();
+<<<<<<< Updated upstream
+    this.formateurForm.competences=new Array<Matiere>();
   }
 
   edit(id: number) {
-    let formateur: Formateur = this.formateurService.findById(id);
-    let adresse : Adresse = new Adresse(formateur.adr.rue,formateur.adr.complement,formateur.adr.codePostal,formateur.adr.ville);
-    this.formateurForm = new Formateur(formateur.id, formateur.version, formateur.civilite, formateur.nom, formateur.prenom,formateur.email,formateur.telephone,formateur.experience,formateur.adr);
+   this.formateurService.findById(id).subscribe(response=>
+      {
+        this.formateurForm=response;
+        if(this.formateurForm.adresse==null)
+        {
+          this.formateurForm.adresse=new Adresse();
+        }
+        console.log(response);
+      },
+      error=>console.log(error));
+=======
+  }
+
+  edit(id: number) {
+    this.formateurForm =this.formateurService.findById(id);
+   // let adresse : Adresse = new Adresse(formateur.adr.rue,formateur.adr.complement,formateur.adr.codePostal,formateur.adr.ville);
+     //new Formateur(formateur.id, formateur.version, formateur.civilite, formateur.nom, formateur.prenom,formateur.email,formateur.telephone,formateur.experience,formateur.adr);
+>>>>>>> Stashed changes
   }
 
   delete(id:number)
   {
-    this.formateurService.deleteById(id);
+    this.formateurService.deleteById(id).subscribe(response=>
+      {
+       this.formateurService.load();
+        console.log(response);
+      },
+      error=>console.log(error));
   }
   save() {
     if (this.formateurForm.id) {
@@ -46,6 +77,32 @@ export class FormateurComponent implements OnInit {
 
     this.formateurForm = null;
   }
+
+  checkMatiere(matiere:Matiere,event:any)
+  {
+    if(event.checked) {
+      this.formateurForm.competences.push(matiere);
+    }
+    else
+    {
+      this.removeMatiere(matiere.id);
+    }
+  }
+
+    removeMatiere(id:number)
+    {
+      let find: boolean = false;
+      for (var indice = 0; indice < this.formateurForm.competences.length; indice++) {
+        if (this.formateurForm.competences[indice].id == id) {
+          find = true;
+          break;
+        }
+      }
+      if (find) {
+        this.formateurForm.competences.splice(indice, 1);
+      }
+    }
+
 
   cancel() {
     this.formateurForm = null;
