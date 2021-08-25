@@ -10,4 +10,6 @@ export class Stagiaire extends Personne{
     this.dtNaissance=dtNaissance;
     this.niveauEtude=niveauEtude;
   }
+
+
 }
