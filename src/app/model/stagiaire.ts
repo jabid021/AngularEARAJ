@@ -1,6 +1,6 @@
 import {Personne} from "./personne";
 import {Adresse} from "./adresse";
-import {Filiere} from "./Filiere";
+import {Filiere} from "./filiere";
 import {Evaluation} from "./evaluation";
 
 export class Stagiaire extends Personne{
