@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Stagiaire} from "../model/stagiaire";
 import {StagiaireService} from "./stagiaire.service";
+import {Adresse} from "../model/adresse";
 
 @Component({
   selector: 'app-stagiaire',
@@ -21,6 +22,7 @@ export class StagiaireComponent implements OnInit {
 
   add() {
     this.stagiaireForm = new Stagiaire();
+    this.stagiaireForm.adr = new Adresse();
   }
 
   edit(id: number) {
@@ -42,4 +44,8 @@ export class StagiaireComponent implements OnInit {
     this.stagiaireForm = null;
   }
 
+  delete(id:number)
+  {
+    this.stagService.deleteById(id);
+  }
 }
