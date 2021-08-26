@@ -34,7 +34,7 @@ export class StagiaireHttpService {
   }
 
   modify(stagiaire: Stagiaire) {
-    this.http.put<Array<Stagiaire>>(this.chemin+stagiaire.id,stagiaire).subscribe(response=>
+    this.http.put<Array<Stagiaire>>(this.chemin+stagiaire.id, stagiaire).subscribe(response=>
       {
         this.load();
         console.log(response);

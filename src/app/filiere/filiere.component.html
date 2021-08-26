@@ -78,7 +78,7 @@
         <label for="referent">Formateur:</label>
         <select class="form-control" id="referent" [(ngModel)]="filiereForm.referent.id">
           <option value="">Choisir un formateur</option>
-          <option *ngFor="let forma of listFormateur()" [value]="forma.id">{{forma?.id}} - {{forma?.nom}}- {{forma?.prenom}}</option>
+          <option *ngFor="let forma of listFormateur()" [value]="forma?.id">{{forma?.id}} - {{forma?.nom}}- {{forma?.prenom}}</option>
         </select>
       </div>
 

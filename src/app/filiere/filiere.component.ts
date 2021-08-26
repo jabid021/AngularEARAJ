@@ -36,23 +36,23 @@ export class FiliereComponent implements OnInit {
 
   add() {
     this.filiereForm = new Filiere();
-    this.filiereForm.referent=null;
-    this.filiereForm.ues= null;
+    this.filiereForm.referent=new Formateur();
   }
 
   edit(id: number) {
-
     this.filiereService.findById(id).subscribe(resp => {
+      if(!resp.referent){
+        resp.referent = new Formateur();
+      }
       this.filiereForm = resp;
     })
-    if (!this.filiereForm.referent) {
-      this.filiereForm.referent= new Formateur();
-    }
 
   }
 
   save() {
-    console.log(this.filiereForm);
+    if(!this.filiereForm.referent.id){
+      this.filiereForm.referent = null;
+    }
     if (this.filiereForm.id) {
       this.filiereService.modify(this.filiereForm);
     } else {

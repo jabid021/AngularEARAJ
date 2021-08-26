@@ -9,6 +9,7 @@ import {FiliereService} from "../filiere/filiere.service";
 import {StagiaireHttpService} from "./stagiaire-http.service";
 import {FiliereHttpService} from "../filiere/filiere-http.service";
 import {EvaluationHttpService} from "../evaluation/evaluation-http.service";
+import {Formateur} from "../model/formateur";
 
 @Component({
   selector: 'app-stagiaire',
@@ -43,15 +44,30 @@ export class StagiaireComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.stagService.findById(id).subscribe(response=>
+    this.stagService.findById(id).subscribe(resp=>
       {
-        this.stagiaireForm=response;
-        console.log(response);
+        if(!resp.evaluation){
+          resp.evaluation = new Evaluation();
+        }
+        if(!resp.filiere){
+          resp.filiere = new Filiere();
+        }
+        if(!resp.adresse){
+          resp.adresse = new Adresse();
+        }
+        this.stagiaireForm=resp;
+        console.log(resp);
       },
       error=>console.log(error));
   }
 
   save() {
+    if(!this.stagiaireForm.evaluation.id){
+      this.stagiaireForm.evaluation = null;
+    }
+    if(!this.stagiaireForm.filiere.id){
+      this.stagiaireForm.filiere = null;
+    }
     if (this.stagiaireForm.id) {
       this.stagService.modify(this.stagiaireForm);
     } else {
@@ -65,8 +81,9 @@ export class StagiaireComponent implements OnInit {
     this.stagiaireForm = null;
   }
 
-  delete(id:number)
-  {
-    this.stagService.deleteById(id);
+  delete(id: number) {
+    this.stagService.deleteById(id).subscribe(resp => {
+      this.stagService.load();
+    }, error => console.log(error));
   }
 }
